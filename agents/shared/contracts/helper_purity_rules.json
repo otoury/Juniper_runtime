@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "contracts": [
+    {
+      "id": "helper_semantic_purity_v1",
+      "contract_version": 1,
+      "scope": "helper_layer",
+      "rules": {
+        "helpers_may_assist_execution": true,
+        "helpers_semantic_orchestration_allowed": false,
+        "helper_derived_planner_mutation_allowed": false,
+        "hidden_helper_routing_allowed": false,
+        "hidden_visibility_attachment_allowed": false,
+        "hidden_governance_injection_allowed": false,
+        "memory_writes_allowed": false,
+        "fail_closed_validation_required": true,
+        "explicit_cross_substrate_contract_required": true
+      },
+      "prohibited_behaviors": [
+        "hidden_helper_routing",
+        "helper_derived_planner_mutation",
+        "hidden_visibility_attachment",
+        "hidden_governance_injection",
+        "memory_write"
+      ],
+      "diagnostics": {
+        "diagnostic_type": "helper_semantic_purity_diagnostic",
+        "auditable": true,
+        "content_safe": true,
+        "observational_only": true
+      }
+    }
+  ]
+}

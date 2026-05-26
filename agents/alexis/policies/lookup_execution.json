@@ -1,0 +1,52 @@
+{
+  "bindings": {
+    "draft_email": {
+      "lookup_execution_policy": {
+        "timeout_ms": 3000,
+        "cancellation_behavior": "fail_closed",
+        "max_concurrent_lookups": 4
+      },
+      "lookup_request_policy": {
+        "enabled": true,
+        "lookup_type": "exact_entity_lookup",
+        "entity_type": "guest",
+        "source_scope": "alexis_guest_canonical_csv",
+        "allowed_source_scopes": [
+          "alexis_guest_canonical_csv"
+        ],
+        "required_planner_fields": [
+          "entity_name"
+        ],
+        "optional_planner_fields": [
+          "workflow_topic"
+        ]
+      }
+    },
+    "bounded_guest_search": {
+      "lookup_execution_policy": {
+        "timeout_ms": 3000,
+        "cancellation_behavior": "fail_closed",
+        "max_concurrent_lookups": 1
+      },
+      "lookup_request_policy": {
+        "enabled": true,
+        "lookup_type": "bounded_entity_search",
+        "entity_type": "guest",
+        "source_scope": "alexis_guest_canonical_csv",
+        "allowed_source_scopes": [
+          "alexis_guest_canonical_csv"
+        ],
+        "required_any_planner_fields": [
+          "search_topic",
+          "query_intent"
+        ],
+        "optional_planner_fields": [
+          "constraints",
+          "max_results"
+        ],
+        "execution_status": "implemented",
+        "max_results": 5
+      }
+    }
+  }
+}

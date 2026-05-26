@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "contracts": [
+    {
+      "id": "cross_substrate_interaction_contract_v1",
+      "contract_version": 1,
+      "substrates": [
+        "retrieval",
+        "workflow",
+        "governance",
+        "visibility"
+      ],
+      "allowed_influence_directions": [
+        {
+          "source": "governance",
+          "target": "retrieval",
+          "interaction_type": "execution_constraint",
+          "authority": "constrain_execution_only"
+        },
+        {
+          "source": "governance",
+          "target": "workflow",
+          "interaction_type": "execution_constraint",
+          "authority": "constrain_execution_only"
+        },
+        {
+          "source": "workflow",
+          "target": "retrieval",
+          "interaction_type": "explicit_lookup_request",
+          "authority": "declared_request_only"
+        },
+        {
+          "source": "retrieval",
+          "target": "workflow",
+          "interaction_type": "explicit_retrieval_provenance",
+          "authority": "provenance_only"
+        },
+        {
+          "source": "retrieval",
+          "target": "visibility",
+          "interaction_type": "observational_diagnostic",
+          "authority": "content_safe_visibility_only"
+        },
+        {
+          "source": "workflow",
+          "target": "visibility",
+          "interaction_type": "observational_diagnostic",
+          "authority": "content_safe_visibility_only"
+        },
+        {
+          "source": "governance",
+          "target": "visibility",
+          "interaction_type": "observational_diagnostic",
+          "authority": "content_safe_visibility_only"
+        }
+      ],
+      "prohibited_implicit_coupling_paths": [
+        "retrieval_to_governance_state",
+        "retrieval_to_workflow_state_mutation",
+        "retrieval_to_workflow_semantic_mutation",
+        "retrieval_to_visibility_content_injection",
+        "workflow_to_retrieval_policy_implicit",
+        "workflow_to_governance_state",
+        "governance_to_retrieval_semantic_mutation",
+        "governance_to_workflow_semantic_mutation",
+        "governance_to_planner_semantic_mutation",
+        "visibility_to_retrieval_policy",
+        "visibility_to_workflow_state",
+        "visibility_to_governance_state",
+        "visibility_to_planner_prompt",
+        "any_to_memory_write",
+        "any_to_hidden_autonomy"
+      ],
+      "requirements": {
+        "explicit_contract_id_required": true,
+        "semantic_reinterpretation_allowed": false,
+        "cross_substrate_planner_mutation_allowed": false,
+        "implicit_substrate_inheritance_allowed": false,
+        "hidden_orchestration_allowed": false,
+        "memory_writes_allowed": false,
+        "hidden_autonomy_allowed": false,
+        "visibility_observational_only": true,
+        "auditable_diagnostics_required": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+> base lower third artifact
+EXPECT error=false
+---
+write a lower third about ai regulation
+
+> transform punchier
+EXPECT error=false
+EXPECT requires_artifact_context=true
+---
+make it punchier
+
+> guestDB
+EXPECT error=false
+---
+find me 3 guests to discuss AI regulation
+
+> email
+EXPECT error=false
+---
+draft an outreach email to one of them

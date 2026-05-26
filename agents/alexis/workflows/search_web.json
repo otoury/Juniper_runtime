@@ -1,0 +1,63 @@
+{
+  "workflow_id": "search_web",
+  "workflow_type": "semantic_workflow_skeleton",
+  "owning_agent": "alexis",
+  "description": "Governed external guest discovery workflow skeleton for future web-backed search.",
+  "governance_state": "enabled",
+  "planner_authority_required": true,
+  "steps": [
+    {
+      "step_id": "web_guest_discovery_placeholder",
+      "step_kind": "retrieval",
+      "semantic_operation": "web_guest_discovery_placeholder",
+      "capability": "discover_entities",
+      "output_type": "lookup_result_set",
+      "requires_approval": false,
+      "bounded": true,
+      "governance_state": "audit_only",
+      "placeholder": true,
+      "input_refs": [
+        "artifact:guest_search_request:active",
+        "artifact:guest_candidate_list:search_db",
+        "artifact:guest_candidate_adequacy:search_db"
+      ],
+      "constraints": {
+        "lookup_type": "external_guest_discovery",
+        "entity_type": "guest",
+        "source_scope": "web",
+        "max_results": 25,
+        "query_refs": [
+          "artifact:guest_search_request:active"
+        ],
+        "expected_output_artifact": {
+          "artifact_type": "guest_candidate_list",
+          "source_scope": "web",
+          "candidates": [],
+          "discovery_executed": false
+        },
+        "web_search_execution_allowed": false,
+        "declaration_only": true,
+        "future_governance_required": true,
+        "future_enrichment_signals": [
+          "has_email_contact",
+          "email_refs",
+          "has_video_presence",
+          "video_presence_refs",
+          "contact_confidence",
+          "on_air_suitability_signals"
+        ],
+        "ranking_performed": false
+      },
+      "on_success": "__terminate__",
+      "on_failure": "__terminate__",
+      "on_inadequate": "__terminate__"
+    }
+  ],
+  "non_goals": [
+    "no web search execution",
+    "no cloud/web governance",
+    "no ranking",
+    "no outreach draft generation",
+    "no delivery execution"
+  ]
+}

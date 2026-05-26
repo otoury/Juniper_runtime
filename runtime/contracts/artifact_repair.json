@@ -1,0 +1,17 @@
+{
+  "name": "artifact_repair",
+  "description": "Repair an artifact so it satisfies runtime quality constraints.",
+  "return_instruction": "Return ONLY the repaired artifact payload. No explanation.",
+  "schema": {
+    "type": "object",
+    "required": [
+      "content"
+    ],
+    "properties": {
+      "content": {
+        "type": "string"
+      }
+    },
+    "additionalProperties": false
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "version": 1,
+  "contracts": [
+    {
+      "id": "scheduled_workflow_task",
+      "contract_version": 1,
+      "task_type": "scheduled_workflow_task",
+      "schedule_expression": {
+        "allowed_types": [
+          "cron",
+          "interval"
+        ],
+        "static_declaration_required": true,
+        "runtime_interpretation_allowed": false,
+        "cron": {
+          "required_fields": [
+            "expression",
+            "timezone"
+          ]
+        },
+        "interval": {
+          "required_fields": [
+            "every_ms"
+          ]
+        }
+      },
+      "binding_reference": {
+        "type": "agent_workflow_binding",
+        "required_fields": [
+          "agent",
+          "workflow",
+          "binding_id"
+        ],
+        "owner": "agent_local_workflow_binding"
+      },
+      "semantic_operation": {
+        "required": true,
+        "allowed_operation_types": [
+          "WORKFLOW_MAINTENANCE",
+          "NEWS_INGESTION",
+          "SMOKE_CHECK",
+          "DATABASE_AUDIT"
+        ],
+        "required_fields": [
+          "operation_type",
+          "capability_id",
+          "produces_artifact",
+          "external_side_effects_allowed",
+          "memory_write_allowed",
+          "requires_approval"
+        ],
+        "side_effect_flags": [
+          "produces_artifact",
+          "external_side_effects_allowed",
+          "memory_write_allowed",
+          "requires_approval"
+        ]
+      },
+      "governance": {
+        "allowed_states": [
+          "enabled",
+          "disabled",
+          "audit_only"
+        ],
+        "default_state": "disabled"
+      },
+      "execution_constraints": {
+        "required_fields": [
+          "max_runtime_ms",
+          "max_concurrent_runs"
+        ],
+        "retry_policy": {
+          "default": "none",
+          "allowed": [
+            "none"
+          ]
+        }
+      },
+      "provenance_audit": {
+        "required": true,
+        "required_fields": [
+          "task_id",
+          "contract_id",
+          "task_type",
+          "schedule_type",
+          "agent",
+          "workflow",
+          "binding_id",
+          "governance_state",
+          "manifest_path"
+        ],
+        "execution_trace_required_if_executed_later": true
+      },
+      "fail_closed": {
+        "missing_schedule": true,
+        "malformed_schedule": true,
+        "missing_binding_reference": true,
+        "unknown_governance_state": true,
+        "missing_execution_constraints": true,
+        "malformed_execution_constraints": true,
+        "missing_provenance_audit": true,
+        "forbidden_autonomous_fields": true
+      },
+      "non_goals": [
+        "no_autonomous_task_creation",
+        "no_self_modifying_schedules",
+        "no_hidden_prompt_execution",
+        "no_memory_writes_unless_future_explicit_workflow_allows_it"
+      ],
+      "forbidden_declaration_fields": [
+        "autonomous",
+        "autonomous_task_creation",
+        "self_mutating_schedule",
+        "self_modifying_schedule",
+        "hidden_prompt",
+        "hidden_prompt_execution",
+        "memory_write",
+        "memory_writes",
+        "background_retrieval",
+        "execution_callable",
+        "runner"
+      ]
+    }
+  ],
+  "task_declarations": []
+}

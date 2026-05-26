@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "contracts": [
+    {
+      "id": "runtime_utility_boundary_v1",
+      "contract_version": 1,
+      "scope": "runtime_utility_layer",
+      "rules": {
+        "utilities_infrastructural_only": true,
+        "utility_semantic_authority_allowed": false,
+        "utility_orchestration_allowed": false,
+        "utility_workflow_mutation_allowed": false,
+        "utility_retrieval_influence_allowed": false,
+        "utility_trust_influence_allowed": false,
+        "memory_writes_allowed": false,
+        "fail_closed_validation_required": true,
+        "runtime_topology_conformance_required": true
+      },
+      "allowed_topology_roots": [
+        "runtime"
+      ],
+      "prohibited_influence_paths": [
+        "utility_to_planner_semantic_mutation",
+        "utility_to_execution_planning",
+        "utility_to_workflow_mutation",
+        "utility_to_hidden_orchestration",
+        "utility_to_retrieval_policy",
+        "utility_to_retrieval_ranking",
+        "utility_to_lookup_context_injection",
+        "utility_to_trust_state",
+        "utility_to_approval_state",
+        "utility_to_governance_state",
+        "utility_to_memory_write",
+        "utility_to_hidden_autonomy"
+      ],
+      "diagnostics": {
+        "diagnostic_type": "runtime_utility_boundary_diagnostic",
+        "auditable": true,
+        "content_safe": true,
+        "observational_only": true
+      }
+    }
+  ]
+}

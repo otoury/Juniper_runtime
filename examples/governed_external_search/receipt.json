@@ -1,0 +1,8 @@
+{
+  "provider": "fake_search_provider",
+  "execution_mode": "dry_run",
+  "authorization_status": "blocked",
+  "query": "synthetic civic data example",
+  "result_count": 0,
+  "receipt_id": "receipt_demo_001"
+}

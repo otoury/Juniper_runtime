@@ -1,0 +1,225 @@
+{
+  "version": 1,
+  "agent": "alexis",
+  "task_declarations": [
+    {
+      "id": "alexis_daily_news_briefing",
+      "contract_id": "scheduled_workflow_task",
+      "task_type": "scheduled_workflow_task",
+      "schedule": {
+        "type": "cron",
+        "expression": "0 7 * * *",
+        "timezone": "UTC"
+      },
+      "binding": {
+        "agent": "alexis",
+        "workflow": "alexis_daily_news_briefing",
+        "binding_id": "alexis_daily_news_briefing"
+      },
+      "semantic_operation": {
+        "operation_type": "NEWS_INGESTION",
+        "capability_id": "alexis_news_briefing",
+        "produces_artifact": false,
+        "external_side_effects_allowed": false,
+        "memory_write_allowed": false,
+        "requires_approval": false
+      },
+      "governance_state": "disabled",
+      "execution_constraints": {
+        "max_runtime_ms": 30000,
+        "max_concurrent_runs": 1,
+        "retry_policy": {
+          "type": "none"
+        }
+      },
+      "provenance_audit": {
+        "required": true,
+        "required_fields": [
+          "task_id",
+          "contract_id",
+          "task_type",
+          "schedule_type",
+          "agent",
+          "workflow",
+          "binding_id",
+          "governance_state",
+          "manifest_path"
+        ]
+      },
+      "fail_closed": {
+        "missing_schedule": true,
+        "malformed_schedule": true,
+        "missing_binding_reference": true,
+        "unknown_governance_state": true,
+        "missing_execution_constraints": true,
+        "malformed_execution_constraints": true,
+        "missing_provenance_audit": true,
+        "forbidden_autonomous_fields": true
+      }
+    },
+    {
+      "id": "alexis_rss_feed_check",
+      "contract_id": "scheduled_workflow_task",
+      "task_type": "scheduled_workflow_task",
+      "schedule": {
+        "type": "interval",
+        "every_ms": 1800000
+      },
+      "binding": {
+        "agent": "alexis",
+        "workflow": "alexis_rss_feed_check",
+        "binding_id": "alexis_rss_feed_check"
+      },
+      "semantic_operation": {
+        "operation_type": "NEWS_INGESTION",
+        "capability_id": "alexis_rss_feed_check",
+        "produces_artifact": false,
+        "external_side_effects_allowed": false,
+        "memory_write_allowed": false,
+        "requires_approval": false
+      },
+      "governance_state": "enabled",
+      "execution_constraints": {
+        "max_runtime_ms": 30000,
+        "max_concurrent_runs": 1,
+        "retry_policy": {
+          "type": "none"
+        }
+      },
+      "provenance_audit": {
+        "required": true,
+        "required_fields": [
+          "task_id",
+          "contract_id",
+          "task_type",
+          "schedule_type",
+          "agent",
+          "workflow",
+          "binding_id",
+          "governance_state",
+          "manifest_path"
+        ]
+      },
+      "fail_closed": {
+        "missing_schedule": true,
+        "malformed_schedule": true,
+        "missing_binding_reference": true,
+        "unknown_governance_state": true,
+        "missing_execution_constraints": true,
+        "malformed_execution_constraints": true,
+        "missing_provenance_audit": true,
+        "forbidden_autonomous_fields": true
+      }
+    },
+    {
+      "id": "alexis_guest_db_freshness_audit",
+      "contract_id": "scheduled_workflow_task",
+      "task_type": "scheduled_workflow_task",
+      "schedule": {
+        "type": "cron",
+        "expression": "0 8 * * 1",
+        "timezone": "UTC"
+      },
+      "binding": {
+        "agent": "alexis",
+        "workflow": "alexis_guest_db_freshness_audit",
+        "binding_id": "alexis_guest_db_freshness_audit"
+      },
+      "semantic_operation": {
+        "operation_type": "DATABASE_AUDIT",
+        "capability_id": "alexis_guest_db_freshness_audit",
+        "produces_artifact": false,
+        "external_side_effects_allowed": false,
+        "memory_write_allowed": false,
+        "requires_approval": false
+      },
+      "governance_state": "audit_only",
+      "execution_constraints": {
+        "max_runtime_ms": 15000,
+        "max_concurrent_runs": 1,
+        "retry_policy": {
+          "type": "none"
+        }
+      },
+      "provenance_audit": {
+        "required": true,
+        "required_fields": [
+          "task_id",
+          "contract_id",
+          "task_type",
+          "schedule_type",
+          "agent",
+          "workflow",
+          "binding_id",
+          "governance_state",
+          "manifest_path"
+        ]
+      },
+      "fail_closed": {
+        "missing_schedule": true,
+        "malformed_schedule": true,
+        "missing_binding_reference": true,
+        "unknown_governance_state": true,
+        "missing_execution_constraints": true,
+        "malformed_execution_constraints": true,
+        "missing_provenance_audit": true,
+        "forbidden_autonomous_fields": true
+      }
+    },
+    {
+      "id": "alexis_booking_workflow_smoke_check",
+      "contract_id": "scheduled_workflow_task",
+      "task_type": "scheduled_workflow_task",
+      "schedule": {
+        "type": "cron",
+        "expression": "30 8 * * 1",
+        "timezone": "UTC"
+      },
+      "binding": {
+        "agent": "alexis",
+        "workflow": "alexis_booking_workflow_smoke_check",
+        "binding_id": "alexis_booking_workflow_smoke_check"
+      },
+      "semantic_operation": {
+        "operation_type": "SMOKE_CHECK",
+        "capability_id": "alexis_booking_workflow_smoke_check",
+        "produces_artifact": false,
+        "external_side_effects_allowed": false,
+        "memory_write_allowed": false,
+        "requires_approval": false
+      },
+      "governance_state": "audit_only",
+      "execution_constraints": {
+        "max_runtime_ms": 15000,
+        "max_concurrent_runs": 1,
+        "retry_policy": {
+          "type": "none"
+        }
+      },
+      "provenance_audit": {
+        "required": true,
+        "required_fields": [
+          "task_id",
+          "contract_id",
+          "task_type",
+          "schedule_type",
+          "agent",
+          "workflow",
+          "binding_id",
+          "governance_state",
+          "manifest_path"
+        ]
+      },
+      "fail_closed": {
+        "missing_schedule": true,
+        "malformed_schedule": true,
+        "missing_binding_reference": true,
+        "unknown_governance_state": true,
+        "missing_execution_constraints": true,
+        "malformed_execution_constraints": true,
+        "missing_provenance_audit": true,
+        "forbidden_autonomous_fields": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "transform_intents": {
+    "guidance": [
+      "Only set transform_intent when interaction_mode is TRANSFORM_EXISTING.",
+      "For CONTINUE_WORKFLOW, transform_intent must be null.",
+      "Preserve the user's requested style direction; do not collapse unrelated style changes into one generic intent."
+    ]
+  }
+}

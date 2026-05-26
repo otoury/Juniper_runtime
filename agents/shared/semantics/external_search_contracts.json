@@ -1,0 +1,135 @@
+{
+  "version": 1,
+  "contracts": [
+    {
+      "id": "external_search",
+      "operation_id": "external_search",
+      "semantic_type": "external_search",
+      "enabled": true,
+      "description": "Canonical governed external-search contract. This defines planner/runtime request and result boundaries only; it does not authorize provider selection, provider integration, network calls, summarization, ranking, or delivery.",
+      "inputs": {
+        "required": [
+          "query"
+        ],
+        "optional": [
+          "search_intent",
+          "max_results",
+          "freshness_policy",
+          "source_policy",
+          "result_bounds"
+        ],
+        "planner_fields_forbidden": [
+          "adapter_id",
+          "api_key",
+          "browser_callable",
+          "credential_env_var",
+          "datasource_path",
+          "delivery_target",
+          "domain_output_type",
+          "executor",
+          "model",
+          "normalizer",
+          "provider_id",
+          "provider_name",
+          "provider_type",
+          "ranking",
+          "summarizer"
+        ]
+      },
+      "governance": {
+        "external": true,
+        "governed": true,
+        "cost_bearing": true,
+        "contract_stage": "pre_provider_integration",
+        "provider_integration_allowed": false,
+        "provider_selection_allowed": false,
+        "network_calls_allowed": false,
+        "browser_calls_allowed": false,
+        "cloud_model_calls_allowed": false,
+        "credential_access_allowed": false,
+        "execution_allowed": false,
+        "dry_run_or_mock_required": true,
+        "delivery_allowed": false
+      },
+      "result_contract": {
+        "artifact_type": "external_search_result_set",
+        "raw_results_required": true,
+        "source_refs_required": true,
+        "citations_required": true,
+        "result_lineage_required_for_normalized_results": true,
+        "provider_metadata_allowed": false,
+        "final_answer": false,
+        "summarization_allowed": false,
+        "domain_normalization_allowed": false,
+        "ranking_allowed": false,
+        "selection_allowed": false,
+        "delivery_allowed": false,
+        "empty_result_allowed_when_not_executed": true,
+        "requires_operator_auditable_provenance": true
+      },
+      "bounds": {
+        "max_queries": 1,
+        "max_results": 10,
+        "timeout_ms": 0,
+        "max_cost": {
+          "currency": "USD",
+          "amount": 0,
+          "period": "per_external_search_request"
+        }
+      },
+      "forbidden_behaviors": [
+        "provider_selection",
+        "provider_adapter_invocation",
+        "network_call",
+        "browser_automation",
+        "cloud_model_web_search",
+        "credential_access",
+        "summarization",
+        "domain_normalization",
+        "ranking",
+        "scoring",
+        "selection",
+        "delivery",
+        "writes",
+        "hidden_rag",
+        "heuristic_routing",
+        "prompt_injection"
+      ],
+      "fail_closed": {
+        "missing_required_input": true,
+        "unknown_external_search_type": true,
+        "provider_field_present": true,
+        "execution_requested": true,
+        "network_unavailable": true,
+        "unauthorized_behavior": true,
+        "provider_integration_not_implemented": true
+      },
+      "telemetry_safe_provenance_fields": [
+        "search_id",
+        "operation_id",
+        "semantic_type",
+        "requested_max_results",
+        "execution_allowed",
+        "external_call_performed",
+        "cost_incurred",
+        "result_count",
+        "source_ref_count",
+        "governance_state",
+        "blocked_reason",
+        "provider_authorization"
+      ],
+      "telemetry_forbidden_fields": [
+        "query",
+        "search_intent",
+        "raw_results",
+        "source_refs",
+        "citations",
+        "raw_provider_payload",
+        "provider_payload",
+        "credential",
+        "api_key",
+        "rendered_context"
+      ]
+    }
+  ]
+}

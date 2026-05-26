@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "contracts": [
+    {
+      "id": "bounded_lookup_context_capability",
+      "render_modes": [
+        "structured_fact_block"
+      ],
+      "context_types": [
+        "bounded_lookup_result"
+      ],
+      "content_types": [
+        "lookup_context_block"
+      ],
+      "truncation_modes": [
+        "drop_tail"
+      ],
+      "policy_sections": {
+        "required": [
+          "lookup_request_policy",
+          "lookup_context_materialization_policy",
+          "lookup_context_render_policy",
+          "lookup_context_injection_policy"
+        ],
+        "agent_owned_values": [
+          "entity_type",
+          "source_scope",
+          "allowed_source_scopes",
+          "allowed_fields",
+          "field_order",
+          "field_labels"
+        ]
+      }
+    }
+  ]
+}

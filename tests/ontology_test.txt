@@ -1,0 +1,54 @@
+> start_150_words
+EXPECT error=false
+---
+write 150 words about AI regulation
+
+> add
+EXPECT error=false
+---
+Add the legal angle.
+
+> also_mention
+EXPECT error=false
+---
+Also mention liability.
+
+> work_in
+EXPECT error=false
+---
+Work in the court fight.
+
+> include
+EXPECT error=false
+---
+Include what this could mean legally.
+
+> bring_in
+EXPECT error=false
+---
+Bring in the regulatory consequences.
+
+> make_it
+EXPECT error=false
+---
+Now make it about lawsuits too.
+
+> add_line
+EXPECT error=false
+---
+Add a line about possible challenges in court.
+
+> make_it_or_break_it
+EXPECT error=false
+---
+Make it into 150 words again.
+
+> try_convert
+EXPECT error=false
+EXPECT interaction_mode=CONTINUE_WORKFLOW
+EXPECT transform_type=null
+EXPECT artifact_quality_validation_attempted=false
+EXPECT queued_action_type=send_email
+EXPECT queued_requires_approval=true
+---
+Send it to me by email.

@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "contracts": [
+    {
+      "id": "bounded_lookup_context_capability",
+      "cancellation_behaviors": [
+        "fail_closed"
+      ]
+    }
+  ]
+}

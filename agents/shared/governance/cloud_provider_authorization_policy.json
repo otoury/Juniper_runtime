@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "default_mode": "blocked",
+  "allowed_modes": [
+    "blocked",
+    "all_telegram_users",
+    "allowlisted_telegram_user_ids"
+  ],
+  "live_governance_states": [
+    "enabled"
+  ],
+  "dry_run_forced_when_cloud_dry_run": true,
+  "blocked_contexts": {
+    "channels": [
+      "cli",
+      "dev",
+      "test"
+    ],
+    "request_sources": [
+      "cli",
+      "dev",
+      "test"
+    ],
+    "test_context": true
+  },
+  "recognized_channels": [
+    "telegram"
+  ],
+  "provider_policies": [
+    {
+      "provider_id": "cloud_web_ai",
+      "mode": "blocked",
+      "allowlisted_telegram_user_ids": []
+    }
+  ]
+}

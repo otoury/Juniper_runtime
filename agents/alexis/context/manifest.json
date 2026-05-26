@@ -1,0 +1,32 @@
+{
+  "lower_third": {
+    "include": [
+      "newsroom_style"
+    ],
+    "exclude": [
+      "guest_database",
+      "booking_procedures"
+    ],
+    "max_chars": 1000
+  },
+
+  "guest_booking": {
+    "include": [
+      "guest_database",
+      "booking_procedures",
+      "newsroom_style"
+    ],
+    "exclude": [],
+    "max_chars": 7000
+  },
+
+  "outreach_email": {
+    "include": [
+      "guest_database",
+      "booking_procedures",
+      "newsroom_style"
+    ],
+    "exclude": [],
+    "max_chars": 5000
+  }
+}

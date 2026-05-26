@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "policy_id": "rss_search_api_fallback_eligibility_v1",
+  "description": "Dry-run policy for evaluating RSS coverage fallback eligibility without provider execution. Search API is the first eligible tier before premium cloud web fallback.",
+  "source_artifact_type": "rss_coverage_adequacy",
+  "source_scope": "rss_metadata_cache",
+  "fallback_provider_type": "search_api",
+  "fallback_provider_id": "search_api",
+  "fallback_order": [
+    "rss_first",
+    "search_api",
+    "cloud_web_deep_premium"
+  ],
+  "fallback_tiers": [
+    {
+      "tier_id": "rss_first",
+      "order": 1,
+      "provider_type": "rss_metadata_cache",
+      "provider_id": "rss_metadata_cache",
+      "requires_prior_inadequacy": [],
+      "active_by_default": true,
+      "execution_allowed": true,
+      "premium": false
+    },
+    {
+      "tier_id": "search_api",
+      "order": 2,
+      "provider_type": "search_api",
+      "provider_id": "search_api",
+      "requires_prior_inadequacy": [
+        "rss_first"
+      ],
+      "active_by_default": false,
+      "execution_allowed": false,
+      "premium": false,
+      "source_normalization_required_before_summary": true
+    },
+    {
+      "tier_id": "cloud_web_deep_premium",
+      "order": 3,
+      "provider_type": "cloud_ai",
+      "provider_id": "cloud_web_deep_premium",
+      "provider_capability": "cloud_web_deep",
+      "requires_prior_inadequacy": [
+        "rss_first",
+        "search_api"
+      ],
+      "active_by_default": false,
+      "execution_allowed": false,
+      "premium": true,
+      "explicit_governance_required": true,
+      "source_fidelity_required": true,
+      "source_refs_required": true,
+      "citations_required": true,
+      "cost_awareness_required": true,
+      "source_normalization_required_before_summary": true
+    }
+  ],
+  "evaluation_mode": "dry_run",
+  "execution_allowed": false,
+  "eligible_outcomes": [
+    "inadequate"
+  ],
+  "eligible_insufficiency_reasons": [
+    "stale_sources",
+    "stale_items",
+    "insufficient_topic_coverage",
+    "insufficient_source_diversity",
+    "fetch_health_failed"
+  ],
+  "blocked_outcome_reasons": {
+    "adequate": "rss_coverage_adequate",
+    "unknown": "rss_coverage_unknown"
+  }
+}

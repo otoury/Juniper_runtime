@@ -1,0 +1,12 @@
+{
+  "context_plan_id": "context_demo_001",
+  "max_items": 2,
+  "max_estimated_tokens": 80,
+  "items": [
+    {
+      "source_id": "synthetic_guest_lookup",
+      "artifact_id": "guest_demo_001",
+      "estimated_tokens": 18
+    }
+  ]
+}

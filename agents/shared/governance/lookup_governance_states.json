@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "contracts": [
+    {
+      "id": "bounded_lookup_context_capability",
+      "governance_states": [
+        "enabled",
+        "disabled",
+        "audit_only",
+        "blocked"
+      ]
+    }
+  ]
+}

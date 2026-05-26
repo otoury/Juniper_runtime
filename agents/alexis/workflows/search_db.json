@@ -1,0 +1,78 @@
+{
+  "workflow_id": "search_db",
+  "workflow_type": "semantic_workflow_skeleton",
+  "owning_agent": "alexis",
+  "description": "Bounded Alexis structured guest database retrieval workflow.",
+  "governance_state": "enabled",
+  "planner_authority_required": true,
+  "steps": [
+    {
+      "step_id": "db_guest_retrieval",
+      "step_kind": "retrieval",
+      "semantic_operation": "db_guest_retrieval",
+      "capability": "discover_entities",
+      "output_type": "lookup_result_set",
+      "requires_approval": false,
+      "bounded": true,
+      "governance_state": "audit_only",
+      "constraints": {
+        "lookup_type": "bounded_entity_search",
+        "entity_type": "guest",
+        "provider_binding_id": "alexis_guest_db",
+        "resource_binding_id": "alexis_guest_db",
+        "source_scope": "guest_db",
+        "output_artifact_type": "guest_candidate_list",
+        "max_results": 5,
+        "retrieval_mode_metadata": {
+          "default_mode": "semantic_lookup",
+          "supported_modes": {
+            "exact_lookup": {
+              "lookup_type": "exact_entity_lookup",
+              "execution_status": "declared_only",
+              "description": "Exact guest lookup by normalized identity when planner supplies explicit identity metadata."
+            },
+            "bounded_lookup": {
+              "lookup_type": "bounded_entity_search",
+              "execution_status": "implemented",
+              "description": "Current bounded guest database search path."
+            },
+            "semantic_lookup": {
+              "lookup_type": "semantic_entity_search",
+              "execution_status": "implemented",
+              "local_only": true,
+              "description": "Local semantic guest database retrieval mode backed by the bounded runtime semantic index.",
+              "governance": {
+                "enabled": true,
+                "embedding_index_backend": "alexis_guest_db_semantic_index_v1",
+                "similarity_threshold": null,
+                "max_semantic_candidates": 5,
+                "live_embedding_calls_allowed": false,
+                "cloud_embedding_calls_allowed": false
+              }
+            }
+          }
+        },
+        "execution_policy_ref": "agents/alexis/policies/lookup_execution.json#bounded_guest_search",
+        "governance_ref": "agents/alexis/governance/lookup_capabilities.json#bounded_guest_search",
+        "future_enrichment_signals": [
+          "has_email_contact",
+          "email_refs",
+          "has_video_presence",
+          "video_presence_refs",
+          "contact_confidence",
+          "on_air_suitability_signals"
+        ],
+        "ranking_performed": false
+      },
+      "on_success": "__terminate__",
+      "on_failure": "__terminate__",
+      "on_inadequate": "__terminate__"
+    }
+  ],
+  "non_goals": [
+    "no web search execution",
+    "no ranking",
+    "no outreach draft generation",
+    "no delivery execution"
+  ]
+}

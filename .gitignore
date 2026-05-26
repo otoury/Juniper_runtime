@@ -1,0 +1,48 @@
+# Local environments and credentials
+.env
+.env.*
+.venv/
+
+# Local agent/Codex state
+.agents/
+.codex/
+
+# Caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Runtime outputs and private state
+logs/
+traces/
+diagnostics/
+memory/
+data/
+archive/
+workflow/
+workspace/
+*.jsonl
+*.db
+*.sqlite
+*.sqlite3
+*.trace
+*.telemetry
+*.log
+
+# Generated task artifacts
+codex_batches/
+reports/
+juniper_*.txt
+prompt_dumps/
+session_dumps/
+output*.txt
+test_result.txt
+
+# Private resources
+agents/*/resources/
+agents/**/resources/raw/
+agents/**/resources/canonical/

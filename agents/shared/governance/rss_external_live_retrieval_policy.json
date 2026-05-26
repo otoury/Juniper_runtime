@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "policy_id": "rss_external_live_retrieval_governance_v1",
+  "description": "Governance policy for deciding whether RSS-first workflows may escalate from cached RSS metadata to external live retrieval.",
+  "source_artifact_type": "rss_coverage_adequacy",
+  "source_scope": "rss_metadata_cache",
+  "default_mode": "blocked",
+  "allowed_modes": [
+    "blocked",
+    "all_telegram_users",
+    "allowlisted_telegram_user_ids"
+  ],
+  "recognized_channels": [
+    "telegram"
+  ],
+  "blocked_contexts": {
+    "channels": [
+      "cli",
+      "dev",
+      "test",
+      "runtime"
+    ],
+    "request_sources": [
+      "cli",
+      "dev",
+      "test",
+      "runtime"
+    ],
+    "test_context": true
+  },
+  "dry_run_forced_when_cloud_dry_run": true,
+  "require_explicit_live_request": true,
+  "require_rss_inadequacy": true,
+  "require_fallback_eligibility": true,
+  "require_provider_live_governance": true,
+  "require_source_refs": true,
+  "require_citations": true,
+  "require_cost_awareness": true,
+  "provider_policies": [
+    {
+      "provider_id": "search_api",
+      "mode": "blocked",
+      "allowlisted_telegram_user_ids": []
+    },
+    {
+      "provider_id": "cloud_web_deep_premium",
+      "mode": "blocked",
+      "allowlisted_telegram_user_ids": []
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "contracts": [
+    {
+      "id": "contact_discovery_safety",
+      "semantic_type": "contact_discovery_safety",
+      "description": "Governance contract for guest/contact external discovery safety before any live contact search path may be enabled.",
+      "allowed_contact_classes": [
+        "public_professional_email",
+        "public_office_press_contact",
+        "public_booking_representative",
+        "public_social_profile",
+        "unverified_possible_contact"
+      ],
+      "verification_states": [
+        "verified_public_professional",
+        "public_source_unverified",
+        "rejected_private_or_personal",
+        "rejected_unsafe_acquisition"
+      ],
+      "required_contact_fields": [
+        "contact_type",
+        "source_type",
+        "source_public",
+        "source_professional",
+        "acquisition_method",
+        "verification_state"
+      ],
+      "content_safe_audit_fields": [
+        "semantic_type",
+        "policy_id",
+        "governance_id",
+        "contract_id",
+        "contact_class",
+        "verification_state",
+        "allowed_for_contact_use",
+        "fail_closed",
+        "skipped_reasons"
+      ],
+      "forbidden_audit_fields": [
+        "contact_value",
+        "email",
+        "phone",
+        "address",
+        "query",
+        "raw_results",
+        "source_refs",
+        "citations",
+        "raw_provider_payload",
+        "provider_payload",
+        "rendered_context"
+      ],
+      "semantic_authority": {
+        "planner_intent_selection_allowed": false,
+        "contact_generation_allowed": false,
+        "provider_selection_allowed": false,
+        "fallback_execution_allowed": false,
+        "memory_writes_allowed": false,
+        "database_update_allowed": false
+      },
+      "fail_closed": {
+        "missing_contract": true,
+        "missing_governance": true,
+        "missing_policy": true,
+        "missing_required_contact_field": true,
+        "non_public_source": true,
+        "non_professional_source": true,
+        "personal_private_contact": true,
+        "guessed_or_generated_contact": true,
+        "raw_provider_payload_present": true,
+        "unknown_contact_class": true,
+        "unsafe_audit_field_present": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "bindings": {
+    "draft_email": {
+      "lookup_context_injection_policy": {
+        "allowed": true,
+        "require_render_decision": true,
+        "require_rendered_context": true,
+        "allowed_content_types": [
+          "lookup_context_block"
+        ],
+        "allowed_render_modes": [
+          "structured_fact_block"
+        ],
+        "max_blocks": 1,
+        "max_facts_per_block": 5,
+        "max_total_characters": 1200,
+        "truncation_mode": "drop_tail"
+      }
+    },
+    "bounded_guest_search": {
+      "lookup_context_injection_policy": {
+        "allowed": true,
+        "require_render_decision": true,
+        "require_rendered_context": true,
+        "allowed_content_types": [
+          "lookup_context_block"
+        ],
+        "allowed_render_modes": [
+          "structured_fact_block"
+        ],
+        "max_blocks": 1,
+        "max_facts_per_block": 5,
+        "max_total_characters": 1200,
+        "truncation_mode": "drop_tail"
+      }
+    }
+  }
+}

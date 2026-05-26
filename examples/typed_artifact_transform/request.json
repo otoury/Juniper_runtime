@@ -1,0 +1,9 @@
+{
+  "operation": "summarize",
+  "input_artifact": {
+    "artifact_type": "source_note",
+    "artifact_id": "note_demo_001",
+    "content": "Synthetic source note for a typed artifact transform example."
+  },
+  "expected_output_artifact_type": "summary"
+}

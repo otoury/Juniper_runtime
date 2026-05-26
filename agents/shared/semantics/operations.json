@@ -1,0 +1,36 @@
+{
+  "operations": {
+    "TRANSFORM": {
+      "interaction_mode": "TRANSFORM_EXISTING",
+      "requires_active_artifact": true,
+      "requires_artifact_context": true,
+      "needs_capability_context": false,
+      "preserves_artifact_type": true,
+      "description": "Revise active artifact content without changing artifact type."
+    },
+    "CONVERT": {
+      "interaction_mode": "CONVERT_ARTIFACT",
+      "requires_active_artifact": true,
+      "requires_artifact_context": true,
+      "needs_capability_context": false,
+      "preserves_artifact_type": false,
+      "description": "Convert active artifact or content to another artifact type."
+    },
+    "ACTION": {
+      "interaction_mode": "CONTINUE_WORKFLOW",
+      "requires_active_artifact": "optional",
+      "requires_artifact_context": false,
+      "needs_capability_context": true,
+      "preserves_artifact_type": false,
+      "description": "Deliver, send, save, schedule, approve, or otherwise act on existing work without rewriting it."
+    },
+    "NEW_REQUEST": {
+      "interaction_mode": "NEW_REQUEST",
+      "requires_active_artifact": false,
+      "requires_artifact_context": false,
+      "needs_capability_context": false,
+      "preserves_artifact_type": null,
+      "description": "Handle a standalone user request without active artifact attachment."
+    }
+  }
+}

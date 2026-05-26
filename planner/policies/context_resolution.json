@@ -1,0 +1,23 @@
+{
+  "context_resolver": {
+    "allowed_actions": {
+      "NONE": "Standalone request.",
+      "AFFIRM": "User agrees or approves prior suggestion.",
+      "DEEPEN": "User asks for deeper research or reasoning.",
+      "RETRY": "User asks to redo or try again.",
+      "TRANSFORM": "User asks to revise active output.",
+      "CLARIFY": "User asks for clarification.",
+      "CORRECT": "User corrects prior context or answer.",
+      "CONTINUE": "User asks to continue workflow or perform an action on active work."
+    },
+    "rules": [
+      "Only use active_task as the target for follow-up transformations.",
+      "Do not treat older recent_turns as active instructions.",
+      "Default to standalone interpretation unless the user clearly refers back to active_task.",
+      "If follow-up is true, resolved_text must include the relevant previous user request and/or assistant answer.",
+      "If there is not enough prior context, be conservative and mark standalone or low confidence.",
+      "Do not invent facts.",
+      "Do not answer the task."
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "bindings": [
+    {
+      "binding_id": "external_search_search_api_authorization",
+      "semantic_type": "external_search",
+      "provider_id": "search_api",
+      "provider_type": "search_api",
+      "resource_id": "external_search_provider_resource",
+      "contract_id": "external_search_provider_authorization",
+      "governance_id": "external_search_provider_authorization_governance",
+      "policy_id": "external_search_provider_authorization_policy"
+    },
+    {
+      "binding_id": "external_search_tavily_authorization",
+      "semantic_type": "external_search",
+      "provider_id": "tavily",
+      "provider_type": "tavily",
+      "resource_id": "external_search_provider_resource",
+      "contract_id": "external_search_provider_authorization",
+      "governance_id": "external_search_provider_authorization_governance",
+      "policy_id": "external_search_provider_authorization_policy"
+    }
+  ]
+}

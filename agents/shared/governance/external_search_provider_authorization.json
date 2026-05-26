@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "id": "external_search_provider_authorization_governance",
+  "default_authorization_state": "blocked",
+  "authorization_states": [
+    "blocked",
+    "audit_only",
+    "allowed"
+  ],
+  "provider_authorizations": [
+    {
+      "provider_id": "search_api",
+      "resource_id": "external_search_provider_resource",
+      "authorization_state": "audit_only",
+      "authorization_reason": "Declared for governed audit only; live execution is not enabled in this stage."
+    },
+    {
+      "provider_id": "tavily",
+      "resource_id": "external_search_provider_resource",
+      "authorization_state": "audit_only",
+      "authorization_reason": "Declared for governed Tavily audit only; live execution is not enabled in this stage."
+    }
+  ]
+}

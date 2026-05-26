@@ -1,0 +1,102 @@
+> generic_150_words
+EXPECT error=false
+EXPECT interaction_mode=NEW_REQUEST
+EXPECT semantic_output_type=written_piece
+EXPECT expected_output_type=artifact
+---
+write 150 words about AI regulation
+
+> generic_short_paragraph
+EXPECT error=false
+EXPECT interaction_mode=NEW_REQUEST
+EXPECT semantic_output_type=written_piece
+EXPECT expected_output_type=artifact
+---
+write a short paragraph about climate policy
+
+> generic_simple_explanation
+EXPECT error=false
+---
+explain quantum computing in simple terms
+
+> generic_brief_overview
+EXPECT error=false
+---
+write a brief overview of the Supreme Court
+
+> explicit_email
+EXPECT error=false
+EXPECT interaction_mode=NEW_REQUEST
+EXPECT uses_active_artifact=false
+EXPECT semantic_output_type=email_draft
+EXPECT expected_output_type=artifact
+---
+draft an email about AI regulation
+
+> explicit_lower_third
+EXPECT error=false
+EXPECT interaction_mode=NEW_REQUEST
+EXPECT semantic_output_type=lower_third
+EXPECT expected_output_type=artifact
+---
+write a lower third about AI regulation
+
+> explicit_producer_note
+EXPECT error=false
+EXPECT interaction_mode=NEW_REQUEST
+EXPECT semantic_output_type=producer_note
+EXPECT expected_output_type=artifact
+---
+write a producer note about AI regulation
+
+> explicit_translation
+EXPECT error=false
+EXPECT interaction_mode=NEW_REQUEST
+EXPECT expected_output_type=translation
+---
+translate this to Hebrew: AI regulation is accelerating
+
+> explicit_send_action
+EXPECT error=false
+EXPECT interaction_mode=CONTINUE_WORKFLOW
+EXPECT semantic_output_type=null
+EXPECT expected_output_type=action
+EXPECT transform_type=null
+EXPECT action_type=send_email
+---
+send it to me by email
+
+> seed_producer_note
+EXPECT error=false
+EXPECT interaction_mode=NEW_REQUEST
+EXPECT semantic_output_type=producer_note
+EXPECT expected_output_type=artifact
+---
+write a producer note reminding the control room the guest is remote from London
+
+> followup_shorten
+EXPECT error=false
+EXPECT interaction_mode=TRANSFORM_EXISTING
+EXPECT semantic_output_type=producer_note
+EXPECT expected_output_type=artifact
+EXPECT transform_type=shorten
+---
+make it shorter
+
+> followup_legal_angle
+EXPECT error=false
+EXPECT interaction_mode=TRANSFORM_EXISTING
+EXPECT semantic_output_type=producer_note
+EXPECT expected_output_type=artifact
+EXPECT transform_type=expand_scope
+---
+add the legal angle
+
+> followup_punchier
+EXPECT error=false
+EXPECT interaction_mode=TRANSFORM_EXISTING
+EXPECT semantic_output_type=producer_note
+EXPECT expected_output_type=artifact
+EXPECT transform_type=punchy
+---
+make it punchier

@@ -1,0 +1,83 @@
+{
+  "config_id": "alexis_rss_topic_normalization_v1",
+  "version": 1,
+  "scope": "alexis_rss_synthesis",
+  "matching_boundary": "cluster_relevance_and_rss_adequacy_only",
+  "families": [
+    {
+      "family_id": "iran",
+      "canonical": "iran",
+      "type": "topic",
+      "aliases": [
+        "iran",
+        "iranian",
+        "tehran",
+        "islamic republic",
+        "ayatollah",
+        "khamenei",
+        "raisi",
+        "pezeshkian",
+        "irgc",
+        "revolutionary guard",
+        "nuclear talks",
+        "nuclear deal",
+        "jcpoa"
+      ]
+    },
+    {
+      "family_id": "israel_gaza",
+      "canonical": "israel gaza",
+      "type": "topic",
+      "aliases": [
+        "israel gaza",
+        "israel",
+        "gaza",
+        "hamas",
+        "hostages",
+        "ceasefire",
+        "idf",
+        "israeli",
+        "palestinian",
+        "palestinians",
+        "west bank",
+        "rafah",
+        "jerusalem",
+        "tel aviv",
+        "settlements"
+      ]
+    },
+    {
+      "family_id": "trump",
+      "canonical": "trump",
+      "type": "entity",
+      "aliases": [
+        "trump",
+        "donald trump",
+        "president trump",
+        "former president trump",
+        "maga",
+        "truth social"
+      ]
+    },
+    {
+      "family_id": "business",
+      "canonical": "business",
+      "type": "topic",
+      "aliases": [
+        "business",
+        "markets",
+        "market",
+        "stocks",
+        "wall street",
+        "economy",
+        "economic",
+        "companies",
+        "earnings",
+        "inflation",
+        "fed",
+        "federal reserve",
+        "central bank"
+      ]
+    }
+  ]
+}

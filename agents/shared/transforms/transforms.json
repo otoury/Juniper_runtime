@@ -1,0 +1,145 @@
+{
+  "shorten": {
+    "operation": "TRANSFORM",
+    "family": "compression",
+    "preserves_artifact_type": true,
+    "aliases": [
+      "shorten",
+      "make shorter",
+      "shorter",
+      "make it into",
+      "150 words again"
+    ],
+    "planning": {
+      "task_family": "rewriting",
+      "reasoning_depth": "low",
+      "style_sensitivity": "high",
+      "execution_target": "local_agent"
+    }
+  },
+  "sharpen": {
+    "operation": "TRANSFORM",
+    "family": "style",
+    "preserves_artifact_type": true,
+    "aliases": [
+      "sharpen",
+      "make sharper",
+      "sharper"
+    ],
+    "planning": {
+      "task_family": "rewriting",
+      "reasoning_depth": "low",
+      "style_sensitivity": "high",
+      "execution_target": "local_agent"
+    }
+  },
+  "tighten": {
+    "operation": "TRANSFORM",
+    "family": "style",
+    "preserves_artifact_type": true,
+    "aliases": [
+      "tighten",
+      "make tighter",
+      "tighter"
+    ],
+    "planning": {
+      "task_family": "rewriting",
+      "reasoning_depth": "low",
+      "style_sensitivity": "high",
+      "execution_target": "local_agent"
+    }
+  },
+  "punchy": {
+    "operation": "TRANSFORM",
+    "family": "style",
+    "preserves_artifact_type": true,
+    "aliases": [
+      "punchy",
+      "punchier",
+      "make it punchier",
+      "make this punchier",
+      "shorter and punchier"
+    ],
+    "planning": {
+      "task_family": "rewriting",
+      "reasoning_depth": "low",
+      "style_sensitivity": "high",
+      "execution_target": "local_agent"
+    }
+  },
+  "top_items": {
+    "operation": "TRANSFORM",
+    "family": "selection",
+    "preserves_artifact_type": true,
+    "aliases": [
+      "top stories",
+      "top items",
+      "top 3",
+      "give me the top 3",
+      "show me the top 3",
+      "give me top 3"
+    ],
+    "planning": {
+      "task_family": "rewriting",
+      "reasoning_depth": "low",
+      "style_sensitivity": "medium",
+      "execution_target": "local_agent"
+    }
+  },
+  "urgent": {
+    "operation": "TRANSFORM",
+    "family": "style",
+    "preserves_artifact_type": true,
+    "aliases": [
+      "urgent",
+      "make urgent",
+      "make more urgent",
+      "more urgent"
+    ],
+    "planning": {
+      "task_family": "rewriting",
+      "reasoning_depth": "low",
+      "style_sensitivity": "high",
+      "execution_target": "local_agent"
+    }
+  },
+  "convert_artifact": {
+    "operation": "CONVERT",
+    "family": "conversion",
+    "preserves_artifact_type": false,
+    "aliases": [],
+    "planning": {
+      "task_family": "rewriting",
+      "reasoning_depth": "low",
+      "style_sensitivity": "high",
+      "execution_target": "local_agent"
+    }
+  },
+  "expand_scope": {
+    "operation": "TRANSFORM",
+    "family": "augmentation",
+    "preserves_artifact_type": true,
+    "aliases": [
+      "expand_scope",
+      "add angle",
+      "add dimension",
+      "add line",
+      "add a line",
+      "include another angle",
+      "include",
+      "mention",
+      "also mention",
+      "work in",
+      "bring in",
+      "make it about",
+      "add implications",
+      "add context"
+    ],
+    "planning": {
+      "task_family": "rewriting",
+      "reasoning_depth": "low",
+      "style_sensitivity": "high",
+      "execution_target": "local_agent"
+    }
+  }
+}

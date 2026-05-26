@@ -1,0 +1,68 @@
+{
+  "skill_id": "summarize",
+  "version": 1,
+  "contracts": [
+    {
+      "contract_id": "summarize_metadata_items",
+      "artifact_type": "summary",
+      "summary_kind_policy": {
+        "required": true,
+        "owner": "agent_workflow"
+      },
+      "tone_policy": {
+        "required": true,
+        "owner": "agent_workflow"
+      },
+      "max_items": 5,
+      "max_words": null,
+      "source_grounding": {
+        "required": true,
+        "required_source_item_fields": [
+          "item_id",
+          "source_ref_id",
+          "source_id",
+          "title",
+          "published",
+          "fetched_at",
+          "provenance"
+        ]
+      },
+      "bounded_output": {
+        "required": true,
+        "max_summary_blocks": 5,
+        "max_summary_chars_per_block": 300
+      },
+      "provenance_audit": {
+        "required": true,
+        "include_item_id": true,
+        "include_source_id": true,
+        "include_published": true,
+        "include_provenance": true
+      },
+      "safety": {
+        "source_expansion_allowed": false,
+        "live_fetch_allowed": false,
+        "memory_write_allowed": false,
+        "model_chaining_allowed": false,
+        "embedding_allowed": false,
+        "autonomous_topic_expansion_allowed": false,
+        "hidden_context_injection_allowed": false
+      },
+      "fail_closed": {
+        "empty_sources": true,
+        "missing_source_grounding": true,
+        "unsupported_artifact_type": true,
+        "unbounded_item_request": true
+      }
+    }
+  ],
+  "explicit_non_goals": [
+    "no source expansion",
+    "no live fetching",
+    "no memory writes",
+    "no embeddings",
+    "no autonomous topic discovery",
+    "no hidden retrieval",
+    "no background cognition"
+  ]
+}

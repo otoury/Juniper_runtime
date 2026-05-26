@@ -1,0 +1,34 @@
+{
+  "capabilities": {
+    "draft_email": {
+      "requires_approval": false,
+      "allowed_agents": ["alexis"],
+      "description": "Create an email draft."
+    },
+    "discover_entities": {
+      "requires_approval": false,
+      "allowed_agents": ["alexis"],
+      "description": "Declare bounded entity search workflows for agent-local discovery."
+    },
+    "send_email": {
+      "requires_approval": true,
+      "allowed_agents": ["alexis"],
+      "description": "Queue an email delivery request for approval; do not send directly."
+    },
+    "producer_note": {
+      "requires_approval": false,
+      "allowed_agents": ["alexis"],
+      "description": "Create an internal newsroom note."
+    },
+    "create_lower_third": {
+      "requires_approval": false,
+      "allowed_agents": ["alexis"],
+      "description": "Create a lower-third/chyron artifact."
+    }
+  },
+  "aliases": {
+    "create_chyron": "create_lower_third",
+    "draft_chyron": "create_lower_third",
+    "draft_lower_third": "create_lower_third"
+  }
+}

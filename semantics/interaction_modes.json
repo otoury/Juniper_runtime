@@ -1,0 +1,52 @@
+{
+  "interaction_modes": {
+    "NEW_REQUEST": {
+      "description": "A standalone request for a new deliverable, artifact, answer, draft, workflow, translation, or summary.",
+      "examples": [
+        "Write a lower third about AI regulation.",
+        "Draft outreach email to a guest.",
+        "Translate this Hebrew statement.",
+        "Summarize this article."
+      ]
+    },
+    "TRANSFORM_EXISTING": {
+      "description": "A request to modify the active previous artifact or output while preserving its artifact/work product identity.",
+      "negative_guidance": [
+        "Do not use for delivery, sending, approval, saving, scheduling, or other workflow actions on the active artifact.",
+        "Do not use just because the user refers to existing work; the requested operation must be an edit/revision."
+      ],
+      "examples": [
+        "Make it shorter.",
+        "Make this funnier.",
+        "Rewrite the previous one.",
+        "Work in the court fight.",
+        "Include what this means legally."
+      ]
+    },
+    "CONVERT_ARTIFACT": {
+      "description": "A request to turn the active artifact or content into a different artifact type.",
+      "examples": [
+        "Turn this into a lower third.",
+        "Convert this to a producer note.",
+        "Make this an email.",
+        "Create bullets from this.",
+        "Turn the guest list into outreach."
+      ]
+    },
+    "CONTINUE_WORKFLOW": {
+      "description": "A request to continue a workflow without transforming the artifact content.",
+      "examples": [
+        "Use the second guest.",
+        "Send it to the producer.",
+        "Email it to me.",
+        "Forward that draft.",
+        "Approve that action.",
+        "Draft outreach to the second guest."
+      ]
+    },
+    "ANSWER_QUESTION": {
+      "description": "A normal question or explanation request.",
+      "examples": []
+    }
+  }
+}

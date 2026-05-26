@@ -1,0 +1,16 @@
+{
+  "type": "object",
+  "required": ["artifact_type", "content"],
+  "properties": {
+    "artifact_type": {
+      "type": "string",
+      "const": "lower_third"
+    },
+    "content": {
+      "type": "string",
+      "single_line": true,
+      "max_words": 8
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "guest_id": "guest_demo_001",
+    "name": "Mara Example",
+    "topic": "local climate policy",
+    "email": "mara.example@example.test",
+    "availability": "weekday afternoons",
+    "source": "synthetic_fixture"
+  },
+  {
+    "guest_id": "guest_demo_002",
+    "name": "Theo Sample",
+    "topic": "community broadband",
+    "email": "theo.sample@example.test",
+    "availability": "mornings",
+    "source": "synthetic_fixture"
+  }
+]

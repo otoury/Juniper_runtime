@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "contracts": [
+    {
+      "id": "bounded_entity_search",
+      "operation_id": "bounded_entity_search",
+      "lookup_type": "bounded_entity_search",
+      "enabled": true,
+      "description": "Declarative contract for bounded entity search requested by an explicit planner decision. This contract defines request shape and audit constraints only; it does not authorize search execution.",
+      "inputs": {
+        "required_any": [
+          "search_topic",
+          "query_intent"
+        ],
+        "optional": [
+          "entity_type",
+          "constraints",
+          "max_results"
+        ],
+        "agent_policy_fields_forbidden": [
+          "source_scope",
+          "raw_source_target",
+          "adapter_id",
+          "datasource_path"
+        ]
+      },
+      "bounded_source_reference": {
+        "field": "source_scope",
+        "owner": "agent_capability_policy",
+        "raw_target_allowed": false,
+        "description": "Shared requests may reference only an agent-authorized source scope supplied by capability policy; raw database paths and private source targets must not be exposed."
+      },
+      "result_expectations": {
+        "max_results": 5,
+        "returns": "bounded_entity_records",
+        "final_answer": false,
+        "empty_result_allowed": true,
+        "requires_operator_auditable_provenance": true
+      },
+      "forbidden_behaviors": [
+        "fuzzy_matching",
+        "semantic_search_execution",
+        "ranking",
+        "scoring",
+        "embeddings",
+        "indexing",
+        "hidden_rag",
+        "heuristic_routing",
+        "autonomous_retrieval",
+        "prompt_injection",
+        "writes"
+      ],
+      "fail_closed": {
+        "missing_required_input": true,
+        "unknown_lookup_type": true,
+        "unavailable_source_scope": true,
+        "malformed_constraints": true,
+        "unauthorized_behavior": true,
+        "execution_not_implemented": true
+      },
+      "telemetry_safe_provenance_fields": [
+        "lookup_id",
+        "operation_id",
+        "lookup_type",
+        "entity_type",
+        "source_scope",
+        "result_count",
+        "retrieval_executed",
+        "skipped_reasons",
+        "governance_state"
+      ],
+      "telemetry_forbidden_fields": [
+        "search_topic",
+        "query_intent",
+        "constraints",
+        "record_contents",
+        "rendered_context",
+        "raw_source_target",
+        "raw_database_path",
+        "datasource_path"
+      ]
+    }
+  ]
+}

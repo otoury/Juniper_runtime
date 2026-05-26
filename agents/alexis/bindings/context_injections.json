@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "injections": [
+    {
+      "id": "alexis_guest_context_notice",
+      "enabled": true,
+      "agent_scope": ["alexis"],
+      "shared_capability_scope": ["draft_email"],
+      "source_contract_id": "alexis_guest_db",
+      "operation_scope": ["NEW_REQUEST"],
+      "injection_mode": "synthetic",
+      "content": "[Bounded guest context: guest_db is available for booking context.]",
+      "source_name": "alexis.guest_db",
+      "source_type": "agent_resource",
+      "max_items": 1,
+      "max_tokens": 80,
+      "requires_provenance_validation": true,
+      "rollback_env_flag": "JUNIPER_DISABLE_CONTEXT_INJECTION",
+      "telemetry_label": "guest_context_notice"
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "contracts": [
+    {
+      "id": "external_search_provider_authorization",
+      "semantic_type": "external_search",
+      "description": "Structural contract for the runtime authorization boundary that must be satisfied before any external-search provider execution can be considered.",
+      "authorization_states": [
+        "blocked",
+        "audit_only",
+        "allowed"
+      ],
+      "required_decision_fields": [
+        "provider_id",
+        "resource_id",
+        "authorization_state",
+        "authorization_status",
+        "live_provider_execution_authorized",
+        "external_call_allowed",
+        "cost_allowed",
+        "audit_required",
+        "fail_closed",
+        "skipped_reasons"
+      ],
+      "content_safe_audit_fields": [
+        "provider_id",
+        "resource_id",
+        "semantic_type",
+        "authorization_state",
+        "authorization_status",
+        "live_provider_execution_authorized",
+        "external_call_allowed",
+        "cost_allowed",
+        "audit_required",
+        "fail_closed",
+        "policy_id",
+        "governance_id",
+        "binding_id",
+        "contract_id",
+        "provider_configuration",
+        "skipped_reasons"
+      ],
+      "forbidden_audit_fields": [
+        "query",
+        "search_intent",
+        "raw_results",
+        "source_refs",
+        "citations",
+        "raw_provider_payload",
+        "provider_payload",
+        "credential",
+        "api_key",
+        "rendered_context"
+      ],
+      "fail_closed": {
+        "missing_provider_id": true,
+        "missing_provider_binding": true,
+        "missing_provider_authorization": true,
+        "unknown_authorization_state": true,
+        "policy_disallows_live_execution": true,
+        "state_not_allowed": true,
+        "malformed_contract": true,
+        "malformed_governance": true,
+        "malformed_policy": true,
+        "malformed_binding": true
+      },
+      "semantic_authority": {
+        "planner_intent_selection_allowed": false,
+        "provider_selection_allowed": false,
+        "fallback_execution_allowed": false,
+        "keyword_routing_allowed": false,
+        "memory_writes_allowed": false
+      }
+    }
+  ]
+}

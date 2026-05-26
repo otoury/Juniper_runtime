@@ -1,0 +1,43 @@
+{
+  "bindings": {
+    "draft_email": {
+      "shared_capability": "draft_email",
+      "skills": [
+        "structured_actions"
+      ],
+      "resources": [
+        "guest_db"
+      ]
+    },
+    "bounded_guest_search": {
+      "shared_capability": "discover_entities",
+      "skills": [
+        "structured_actions"
+      ],
+      "resources": [
+        "guest_db"
+      ]
+    },
+    "send_email": {
+      "shared_capability": "send_email",
+      "skills": [
+        "structured_actions"
+      ],
+      "resources": []
+    },
+    "create_lower_third": {
+      "shared_capability": "create_lower_third",
+      "skills": [
+        "lower_third"
+      ],
+      "resources": []
+    },
+    "producer_note": {
+      "shared_capability": "producer_note",
+      "skills": [
+        "producer_note"
+      ],
+      "resources": []
+    }
+  }
+}

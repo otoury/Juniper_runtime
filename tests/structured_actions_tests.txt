@@ -1,0 +1,82 @@
+> lower_third_fast_path
+EXPECT error=false
+---
+Write a lower third about AI regulation.
+
+> followup_shorter
+EXPECT error=false
+---
+Shorter and punchier.
+
+> hebrew_followup
+EXPECT error=false
+---
+יותר קצר
+
+> french_followup
+EXPECT error=false
+---
+Encore plus direct
+
+> find_guests
+EXPECT error=false
+---
+Find 3 strong guests on AI regulation
+
+> draft_second_guest
+EXPECT error=false
+---
+Draft outreach to the second guest.
+
+> draft_specific_guest
+EXPECT error=false
+---
+Draft outreach email to Dr. Shikha Jain about AI in medicine.
+
+> translate_hebrew
+EXPECT error=false
+---
+Translate this Hebrew statement for TV:
+
+אני מחזק את תושבי הצפון שממשיכים לעמוד איתן.
+במקביל, כוחותינו ממשיכים להכות בחיזבאללה.
+
+> cable_rewrite
+EXPECT error=false
+---
+Rewrite this more aggressively for cable news:
+
+Iran warned the U.S. against further escalation.
+
+> decline_email
+EXPECT error=false
+---
+Draft a polite decline email to a guest who is unavailable this weekend.
+
+> summarize_one_sentence
+EXPECT error=false
+---
+Summarize this in one sentence:
+
+The Senate committee is considering new AI regulation proposals focused on transparency and liability.
+
+> producer_note
+EXPECT error=false
+---
+Write a quick producer note reminding the control room that the guest is remote from London.
+
+> sharper_followup
+EXPECT error=false
+---
+Make it sharper.
+
+> court_followup
+EXPECT error=false
+---
+Plus court implications.
+
+> translate_french
+EXPECT error=false
+---
+Translate to French:
+AI regulation is becoming a global security issue.

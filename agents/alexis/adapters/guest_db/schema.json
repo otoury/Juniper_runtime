@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "fields": [
+    {
+      "name": "guest_id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "display_name",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "expertise",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "booking_notes",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "source_updated_at",
+      "type": "string",
+      "required": false
+    }
+  ]
+}

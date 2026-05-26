@@ -1,0 +1,100 @@
+{
+  "bindings": {
+    "draft_email": {
+      "lookup_context_materialization_policy": {
+        "enabled": true,
+        "context_type": "bounded_lookup_result",
+        "allowed_fields": [
+          "display_name",
+          "title",
+          "expertise",
+          "public_booking_notes",
+          "known_contact_channels"
+        ],
+        "max_fields": 5
+      },
+      "lookup_context_render_policy": {
+        "allowed": true,
+        "render_modes": [
+          "structured_fact_block"
+        ],
+        "max_packets": 1,
+        "require_successful_retrieval": true,
+        "allowed_context_types": [
+          "bounded_lookup_result"
+        ],
+        "allowed_lookup_types": [
+          "exact_entity_lookup"
+        ],
+        "allowed_source_scopes": [
+          "alexis_guest_canonical_csv"
+        ],
+        "allowed_entity_types": [
+          "guest"
+        ],
+        "field_order": [
+          "display_name",
+          "title",
+          "expertise",
+          "public_booking_notes",
+          "known_contact_channels"
+        ],
+        "field_labels": {
+          "display_name": "Display name",
+          "title": "Title",
+          "expertise": "Expertise",
+          "public_booking_notes": "Public booking notes",
+          "known_contact_channels": "Known contact channels"
+        }
+      }
+    },
+    "bounded_guest_search": {
+      "lookup_context_materialization_policy": {
+        "enabled": true,
+        "context_type": "bounded_lookup_result",
+        "allowed_fields": [
+          "display_name",
+          "title",
+          "expertise",
+          "public_booking_notes",
+          "known_contact_channels"
+        ],
+        "max_fields": 5
+      },
+      "lookup_context_render_policy": {
+        "allowed": true,
+        "render_modes": [
+          "structured_fact_block"
+        ],
+        "max_packets": 5,
+        "require_successful_retrieval": true,
+        "allowed_context_types": [
+          "bounded_lookup_result"
+        ],
+        "allowed_lookup_types": [
+          "bounded_entity_search"
+        ],
+        "allowed_source_scopes": [
+          "alexis_guest_canonical_csv"
+        ],
+        "allowed_entity_types": [
+          "guest"
+        ],
+        "field_order": [
+          "display_name",
+          "title",
+          "expertise",
+          "public_booking_notes",
+          "known_contact_channels"
+        ],
+        "field_labels": {
+          "display_name": "Display name",
+          "title": "Title",
+          "expertise": "Expertise",
+          "public_booking_notes": "Public booking notes",
+          "known_contact_channels": "Known contact channels"
+        }
+      }
+    }
+  }
+}

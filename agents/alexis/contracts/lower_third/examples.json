@@ -1,0 +1,9 @@
+[
+  {
+    "input": "Write a lower third about AI regulation.",
+    "output": {
+      "artifact_type": "lower_third",
+      "content": "AI Rules Face Growing Pushback"
+    }
+  }
+]

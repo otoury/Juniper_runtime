@@ -1,0 +1,14 @@
+{
+  "attachment": {
+    "uses_active_artifact_true": [
+      "Dependent modifications of active work.",
+      "Dependent conversions of active work.",
+      "Dependent workflow actions that operate on active work."
+    ],
+    "uses_active_artifact_false": [
+      "Explicit standalone deliverables.",
+      "Standalone questions.",
+      "New drafts or new artifacts with their own subject."
+    ]
+  }
+}

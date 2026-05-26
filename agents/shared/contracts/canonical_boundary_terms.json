@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "contracts": [
+    {
+      "id": "stage169_boundary_terms_v1",
+      "contract_version": 1,
+      "scope": "shared_boundary_contract_surface",
+      "canonical_terms": {
+        "allowed_diagnostic_attachment_targets": "visibility-safe targets for diagnostic surfaces",
+        "allowed_visibility_attachment_targets": "visibility-safe targets for operator visibility surfaces",
+        "semantic_authority_fields": "fields that can alter planner or runtime semantic authority",
+        "memory_fields": "fields that indicate memory state or memory writes",
+        "autonomy_fields": "fields that indicate hidden or explicit autonomy escalation",
+        "mutation_fields": "fields that indicate runtime state mutation",
+        "substrate_state_fields": "state-bearing fields owned by a specific substrate",
+        "forbidden_attachment_targets": "targets where visibility and diagnostic surfaces cannot be attached",
+        "forbidden_content_fields": "content-bearing fields excluded from visibility diagnostics"
+      },
+      "compatibility_aliases": {
+        "semantic_mutation_fields": "semantic_authority_fields"
+      },
+      "requirements": {
+        "fail_closed_validation_required": true,
+        "semantic_weakening_allowed": false,
+        "hidden_abstraction_drift_allowed": false,
+        "visibility_observational_only": true,
+        "governance_constrains_execution_only": true,
+        "cross_substrate_interaction_requires_explicit_contract": true
+      }
+    }
+  ]
+}

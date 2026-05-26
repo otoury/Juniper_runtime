@@ -1,0 +1,64 @@
+{
+  "bindings": {
+    "draft_email": {
+      "tone": "newsroom",
+      "context_policy": {
+        "include_guest_context": true,
+        "include_recent_artifacts": false,
+        "include_user_preferences": true,
+        "resource_scopes": [
+          "booking"
+        ],
+        "max_context_items": 3
+      }
+    },
+    "bounded_guest_search": {
+      "tone": "newsroom",
+      "context_policy": {
+        "include_guest_context": false,
+        "include_recent_artifacts": false,
+        "include_user_preferences": false,
+        "resource_scopes": [
+          "guest_discovery"
+        ],
+        "max_context_items": 0
+      }
+    },
+    "send_email": {
+      "tone": "newsroom",
+      "context_policy": {
+        "include_guest_context": false,
+        "include_recent_artifacts": true,
+        "include_user_preferences": false,
+        "resource_scopes": [
+          "approval_visibility"
+        ],
+        "max_context_items": 1
+      }
+    },
+    "create_lower_third": {
+      "tone": "broadcast",
+      "context_policy": {
+        "include_guest_context": false,
+        "include_recent_artifacts": true,
+        "include_user_preferences": false,
+        "resource_scopes": [
+          "formatting"
+        ],
+        "max_context_items": 2
+      }
+    },
+    "producer_note": {
+      "tone": "newsroom",
+      "context_policy": {
+        "include_guest_context": false,
+        "include_recent_artifacts": true,
+        "include_user_preferences": false,
+        "resource_scopes": [
+          "newsroom"
+        ],
+        "max_context_items": 2
+      }
+    }
+  }
+}

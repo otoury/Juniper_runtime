@@ -1,0 +1,265 @@
+{
+  "version": 1,
+  "contracts": [
+    {
+      "id": "external_discovery_provider",
+      "contract_version": 1,
+      "description": "Shared metadata-only contract for external discovery providers. Provider declarations describe bounded runtime capabilities only; they do not authorize execution.",
+      "required_declaration_fields": [
+        "provider_id",
+        "provider_type",
+        "execution_mode",
+        "governance_state",
+        "external",
+        "cost_bearing",
+        "governed",
+        "non_executing",
+        "governance",
+        "cost_policy",
+        "supported_output_types",
+        "max_queries",
+        "max_results",
+        "max_cost",
+        "execution_bounds",
+        "source_requirements",
+        "citation_requirements"
+      ],
+      "allowed_provider_types": [
+        "cloud_ai",
+        "search_api"
+      ],
+      "allowed_execution_modes": [
+        "declaration_only"
+      ],
+      "allowed_governance_states": [
+        "enabled",
+        "audit_only",
+        "disabled"
+      ],
+      "allowed_output_types": [
+        "external_discovery_result_set",
+        "external_discovery_source_reference"
+      ],
+      "ownership": {
+        "scope": "shared_runtime_capability",
+        "domain_neutral_required": true,
+        "agent_owned_provider_ids_forbidden": true
+      },
+      "execution_policy": {
+        "execution_allowed": false,
+        "network_calls_allowed": false,
+        "cloud_model_calls_allowed": false,
+        "normalization_allowed": false,
+        "delivery_allowed": false
+      },
+      "forbidden_declaration_fields": [
+        "adapter_callable",
+        "agent_id",
+        "browser_callable",
+        "datasource_path",
+        "delivery_target",
+        "domain",
+        "domain_output_type",
+        "execute",
+        "executor",
+        "gateway",
+        "model",
+        "normalizer",
+        "outreach_template",
+        "prompt",
+        "ranking",
+        "summarizer",
+        "summary_prompt",
+        "telegram"
+      ]
+    }
+  ],
+  "provider_declarations": [
+    {
+      "provider_id": "cloud_web_ai",
+      "provider_type": "cloud_ai",
+      "execution_mode": "declaration_only",
+      "governance_state": "audit_only",
+      "external": true,
+      "cost_bearing": true,
+      "governed": true,
+      "non_executing": true,
+      "governance": {
+        "live_execution_allowed": false,
+        "network_calls_allowed": false,
+        "delivery_allowed": false,
+        "dry_run_or_mock_required": true
+      },
+      "cost_policy": {
+        "cost_bearing": true,
+        "free_tier_available": false,
+        "free_tier": {
+          "queries_per_period": null,
+          "period": null,
+          "notes": "No shared free-tier assumption for cloud web providers."
+        },
+        "cost_tracking_required": true
+      },
+      "supported_output_types": [
+        "external_discovery_result_set",
+        "external_discovery_source_reference"
+      ],
+      "max_queries": 3,
+      "max_results": 25,
+      "max_cost": {
+        "currency": "USD",
+        "amount": null,
+        "period": "per_discovery_request"
+      },
+      "execution_bounds": {
+        "max_queries": 3,
+        "max_results": 25,
+        "timeout_ms": 30000,
+        "connect_timeout_ms": 5000,
+        "read_timeout_ms": 25000,
+        "max_retries": 0
+      },
+      "source_requirements": {
+        "source_refs_required": true,
+        "provider_result_id_required": true,
+        "source_url_required": true,
+        "raw_results_required": true,
+        "allowed_source_types": [
+          "web_page"
+        ],
+        "disallowed_source_types": [],
+        "primary_sources_required": null,
+        "freshness_policy": null
+      },
+      "citation_requirements": {
+        "citations_required": true,
+        "minimum_citations": null,
+        "source_url_required": true
+      }
+    },
+    {
+      "provider_id": "search_api",
+      "provider_type": "search_api",
+      "execution_mode": "declaration_only",
+      "governance_state": "audit_only",
+      "external": true,
+      "cost_bearing": true,
+      "governed": true,
+      "non_executing": true,
+      "governance": {
+        "live_execution_allowed": false,
+        "network_calls_allowed": false,
+        "delivery_allowed": false,
+        "dry_run_or_mock_required": true
+      },
+      "cost_policy": {
+        "cost_bearing": true,
+        "free_tier_available": true,
+        "free_tier": {
+          "queries_per_period": null,
+          "period": "provider_defined",
+          "notes": "Provider declarations may record free-tier eligibility only; they do not authorize calls."
+        },
+        "cost_tracking_required": true
+      },
+      "supported_output_types": [
+        "external_discovery_result_set",
+        "external_discovery_source_reference"
+      ],
+      "max_queries": 5,
+      "max_results": 25,
+      "max_cost": {
+        "currency": "USD",
+        "amount": null,
+        "period": "per_discovery_request"
+      },
+      "execution_bounds": {
+        "max_queries": 5,
+        "max_results": 25,
+        "timeout_ms": 15000,
+        "connect_timeout_ms": 3000,
+        "read_timeout_ms": 12000,
+        "max_retries": 0
+      },
+      "source_requirements": {
+        "source_refs_required": true,
+        "provider_result_id_required": true,
+        "source_url_required": true,
+        "raw_results_required": true,
+        "allowed_source_types": [
+          "web_page"
+        ],
+        "disallowed_source_types": [],
+        "primary_sources_required": null,
+        "freshness_policy": null
+      },
+      "citation_requirements": {
+        "citations_required": true,
+        "minimum_citations": null,
+        "source_url_required": true
+      }
+    },
+    {
+      "provider_id": "cloud_web_deep_premium",
+      "provider_type": "cloud_ai",
+      "execution_mode": "declaration_only",
+      "governance_state": "audit_only",
+      "external": true,
+      "cost_bearing": true,
+      "governed": true,
+      "non_executing": true,
+      "governance": {
+        "live_execution_allowed": false,
+        "network_calls_allowed": false,
+        "delivery_allowed": false,
+        "dry_run_or_mock_required": true
+      },
+      "cost_policy": {
+        "cost_bearing": true,
+        "free_tier_available": false,
+        "free_tier": {
+          "queries_per_period": null,
+          "period": null,
+          "notes": "Premium cloud web fallback has no shared free-tier assumption and requires cost awareness before activation."
+        },
+        "cost_tracking_required": true
+      },
+      "supported_output_types": [
+        "external_discovery_result_set",
+        "external_discovery_source_reference"
+      ],
+      "max_queries": 1,
+      "max_results": 25,
+      "max_cost": {
+        "currency": "USD",
+        "amount": null,
+        "period": "per_discovery_request"
+      },
+      "execution_bounds": {
+        "max_queries": 1,
+        "max_results": 25,
+        "timeout_ms": 45000,
+        "connect_timeout_ms": 5000,
+        "read_timeout_ms": 40000,
+        "max_retries": 0
+      },
+      "source_requirements": {
+        "source_refs_required": true,
+        "provider_result_id_required": true,
+        "source_url_required": true,
+        "raw_results_required": true,
+        "allowed_source_types": [
+          "web_page"
+        ],
+        "disallowed_source_types": [],
+        "primary_sources_required": null,
+        "freshness_policy": null
+      },
+      "citation_requirements": {
+        "citations_required": true,
+        "minimum_citations": 1,
+        "source_url_required": true
+      }
+    }
+  ]
+}

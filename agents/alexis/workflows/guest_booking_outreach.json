@@ -1,0 +1,179 @@
+{
+  "workflow_id": "guest_booking_outreach",
+  "workflow_type": "semantic_workflow_skeleton",
+  "owning_agent": "alexis",
+  "description": "Bounded Alexis skeleton for guest retrieval, outreach drafting, approval handoff, and future delivery.",
+  "governance_state": "enabled",
+  "planner_authority_required": true,
+  "steps": [
+    {
+      "step_id": "guest_retrieval",
+      "step_kind": "retrieval",
+      "semantic_operation": "guest_retrieval",
+      "capability": "discover_entities",
+      "output_type": "lookup_result_set",
+      "requires_approval": false,
+      "bounded": true,
+      "governance_state": "audit_only",
+      "constraints": {
+        "lookup_type": "bounded_entity_search",
+        "entity_type": "guest",
+        "resource_binding_id": "alexis_guest_db",
+        "source_scope": "alexis_guest_canonical_csv",
+        "max_results": 5,
+        "execution_policy_ref": "agents/alexis/policies/lookup_execution.json#bounded_guest_search",
+        "governance_ref": "agents/alexis/governance/lookup_capabilities.json#bounded_guest_search"
+      }
+    },
+    {
+      "step_id": "guest_ranking_selection",
+      "step_kind": "selection",
+      "operation_id": "rank_guest_candidates",
+      "operation_kind": "rank_candidates",
+      "semantic_operation": "rank_guest_candidates",
+      "capability": "discover_entities",
+      "output_type": "artifact",
+      "produces_artifact_type": "ranked_guest_candidate_list",
+      "requires_approval": false,
+      "bounded": true,
+      "governance_state": "audit_only",
+      "placeholder": false,
+      "input_refs": [
+        "artifact:guest_candidate_list:guest_retrieval"
+      ],
+      "output_ref": "artifact:ranked_guest_candidate_list:rank_guest_candidates",
+      "constraints": {
+        "input_artifact_type": "guest_candidate_list",
+        "output_artifact_type": "ranked_guest_candidate_list",
+        "declaration_only": false,
+        "ranking_execution_allowed": true,
+        "ranking_logic_implemented": true,
+        "ranking_policy": {
+          "policy_id": "deterministic_guest_enrichment_score_v1",
+          "version": "v1",
+          "deterministic": true,
+          "external_calls_allowed": false,
+          "prose_explanations_allowed": false
+        },
+        "scoring_implemented": true,
+        "signals_declarative_metadata_only": true,
+        "ranking_signals": [
+          {
+            "signal_id": "has_video_presence",
+            "signal_group": "video_on_air_presence",
+            "metadata_only": true
+          },
+          {
+            "signal_id": "video_presence_refs",
+            "signal_group": "video_on_air_presence",
+            "metadata_only": true
+          },
+          {
+            "signal_id": "on_air_suitability_signals",
+            "signal_group": "video_on_air_presence",
+            "metadata_only": true
+          },
+          {
+            "signal_id": "has_email_contact",
+            "signal_group": "email_contact",
+            "metadata_only": true
+          },
+          {
+            "signal_id": "email_refs",
+            "signal_group": "email_contact",
+            "metadata_only": true
+          }
+        ],
+        "max_selected_guests": 1,
+        "selection_basis": "planner_supplied_topic_and_lookup_metadata"
+      }
+    },
+    {
+      "step_id": "outreach_draft_generation",
+      "step_kind": "artifact_generation",
+      "operation_id": "draft_guest_outreach",
+      "operation_kind": "draft_artifact",
+      "semantic_operation": "draft_guest_outreach",
+      "capability": "draft_email",
+      "output_type": "artifact",
+      "produces_artifact_type": "email_draft",
+      "requires_approval": true,
+      "bounded": true,
+      "governance_state": "enabled",
+      "input_refs": [
+        "artifact:ranked_guest_candidate_list:rank_guest_candidates"
+      ],
+      "output_ref": "artifact:email_draft:draft_guest_outreach",
+      "constraints": {
+        "input_artifact_type": "ranked_guest_candidate_list",
+        "output_artifact_type": "email_draft",
+        "selected_candidate_refs_allowed": true,
+        "requires_later_approval": true,
+        "declaration_only": true,
+        "draft_generation_allowed": false,
+        "draft_content_materialized": false,
+        "delivery_performed": false,
+        "send_email_execution_allowed": false,
+        "must_use_typed_artifact": true
+      }
+    },
+    {
+      "step_id": "structured_action_generation",
+      "step_kind": "action_generation",
+      "semantic_operation": "structured_action_generation",
+      "capability": "send_email",
+      "output_type": "typed_action",
+      "action_type": "send_email",
+      "requires_approval": true,
+      "bounded": true,
+      "governance_state": "enabled",
+      "constraints": {
+        "payload_source": "email_draft_artifact",
+        "no_delivery": true
+      }
+    },
+    {
+      "step_id": "approval_required_handoff",
+      "step_kind": "approval_handoff",
+      "semantic_operation": "approval_required_handoff",
+      "capability": "send_email",
+      "output_type": "approval_request",
+      "action_type": "send_email",
+      "requires_approval": true,
+      "bounded": true,
+      "governance_state": "enabled",
+      "constraints": {
+        "handoff_state": "pending_operator_approval",
+        "delivery_allowed": false
+      }
+    },
+    {
+      "step_id": "future_delivery_placeholder",
+      "step_kind": "delivery_placeholder",
+      "semantic_operation": "future_delivery_placeholder",
+      "capability": "send_email",
+      "output_type": "placeholder",
+      "action_type": "send_email",
+      "requires_approval": true,
+      "bounded": true,
+      "governance_state": "disabled",
+      "delivery_performed": false,
+      "placeholder": true,
+      "constraints": {
+        "delivery_integration": "future",
+        "delivery_performed": false,
+        "real_email_sending": false
+      }
+    }
+  ],
+  "non_goals": [
+    "no real email sending",
+    "no hidden capability inference",
+    "no autonomous delivery",
+    "no draft content generation",
+    "no LLM ranking",
+    "no web-backed ranking",
+    "no planner semantic reinterpretation",
+    "no memory mutation"
+  ]
+}

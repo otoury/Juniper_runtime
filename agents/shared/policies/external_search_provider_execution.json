@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "id": "external_search_provider_execution_policy",
+  "semantic_type": "external_search",
+  "default_execution_mode": "disabled",
+  "execution_modes": [
+    "disabled",
+    "audit_only",
+    "allowed"
+  ],
+  "provider_execution_configs": [
+    {
+      "provider_id": "search_api",
+      "provider_type": "search_api",
+      "resource_id": "external_search_provider_resource",
+      "execution_mode": "audit_only",
+      "enabled": false,
+      "live_provider_execution_allowed": false,
+      "max_results": 10,
+      "timeout_ms": 0,
+      "cost_allowed": false,
+      "implementation_status": "declared_not_bound"
+    },
+    {
+      "provider_id": "tavily",
+      "provider_type": "tavily",
+      "resource_id": "external_search_provider_resource",
+      "execution_mode": "audit_only",
+      "enabled": false,
+      "live_provider_execution_allowed": false,
+      "max_results": 10,
+      "timeout_ms": 0,
+      "cost_allowed": false,
+      "implementation_status": "declared_not_bound"
+    }
+  ],
+  "runtime_bounds": {
+    "authorization_required_before_provider_execution": true,
+    "config_must_enable_provider_execution": true,
+    "workflow_to_provider_calls_allowed": false,
+    "provider_selection_allowed": false,
+    "hidden_fallbacks_allowed": false,
+    "hidden_retries_allowed": false,
+    "article_scraping_allowed": false,
+    "summarization_allowed": false,
+    "ranking_allowed": false,
+    "domain_normalization_allowed": false,
+    "memory_writes_allowed": false
+  }
+}

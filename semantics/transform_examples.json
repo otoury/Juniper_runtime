@@ -1,0 +1,16 @@
+{
+  "transform_intents": {
+    "examples": {
+      "make more punchy": "make more punchy",
+      "shorten": "shorten",
+      "tighten": "tighten",
+      "sharpen": "sharpen",
+      "make more urgent": "make more urgent",
+      "make more serious": "make more serious",
+      "make more humorous": "make more humorous",
+      "plus court implications": "expand_scope",
+      "add legal implications": "expand_scope",
+      "include the court angle": "expand_scope"
+    }
+  }
+}

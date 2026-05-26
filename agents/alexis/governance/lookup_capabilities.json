@@ -1,0 +1,17 @@
+{
+  "bindings": {
+    "draft_email": {
+      "lookup_capability_governance": {
+        "state": "enabled"
+      }
+    },
+    "bounded_guest_search": {
+      "lookup_capability_governance": {
+        "state": "audit_only"
+      }
+    },
+    "send_email": {
+      "approval_policy": "shared_capability_required"
+    }
+  }
+}

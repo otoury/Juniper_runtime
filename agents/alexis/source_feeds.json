@@ -1,0 +1,1116 @@
+{
+  "version": 1,
+  "agent": "alexis",
+  "source_declarations": [
+    {
+      "source_id": "alexis_ap_top_news_rss",
+      "contract_id": "source_ingestion_rss_feed",
+      "source_type": "rss_feed",
+      "url": "https://apnews.com/hub/ap-top-news?output=rss",
+      "owning_agent": "alexis",
+      "governance_state": "audit_only",
+      "refresh_policy": {
+        "type": "manual",
+        "cadence_seconds": 1800,
+        "jitter_seconds": 300,
+        "notes": "Manual newsroom RSS metadata ingestion only."
+      },
+      "source_category": {
+        "category": "top_news",
+        "topic_tags": [
+          "ap",
+          "top_news",
+          "breaking_news"
+        ]
+      },
+      "priority_policy": {
+        "domain": "newsroom",
+        "level": "high",
+        "rationale": "AP top-news metadata is useful for source-backed Alexis latest-news context."
+      },
+      "provenance_policy": {
+        "citation_required": true,
+        "source_url_required": true,
+        "attribution_required": true,
+        "prose_only_output_allowed": false
+      },
+      "provenance_audit": {
+        "required": true,
+        "required_fields": [
+          "source_id",
+          "source_type",
+          "owning_agent",
+          "url",
+          "manifest_path",
+          "governance_state",
+          "source_category",
+          "priority_policy",
+          "provenance_policy"
+        ]
+      },
+      "content_safety": {
+        "raw_content_storage_allowed": false,
+        "prompt_injection_surface_allowed": false,
+        "summary_generation_allowed": false
+      },
+      "storage_policy": {
+        "memory_write_allowed": false,
+        "article_storage_allowed": false,
+        "metadata_storage_allowed": true
+      },
+      "readiness_check": {
+        "status": "declared_official_rss",
+        "official_source": true,
+        "validation_method": "static_declared_feed_url",
+        "notes": "AP hub RSS URL declared for live operator validation before scheduled automation."
+      }
+    },
+    {
+      "source_id": "alexis_reuters_top_news_rss",
+      "contract_id": "source_ingestion_rss_feed",
+      "source_type": "rss_feed",
+      "url": "https://www.reuters.com/world/rss",
+      "owning_agent": "alexis",
+      "governance_state": "disabled",
+      "refresh_policy": {
+        "type": "manual",
+        "cadence_seconds": 3600,
+        "jitter_seconds": 300,
+        "notes": "Disabled until official RSS availability is manually verified."
+      },
+      "source_category": {
+        "category": "top_news",
+        "topic_tags": [
+          "reuters",
+          "world",
+          "breaking_news"
+        ]
+      },
+      "priority_policy": {
+        "domain": "newsroom",
+        "level": "high",
+        "rationale": "Reuters is a priority newsroom source, but this feed must remain disabled until verified."
+      },
+      "provenance_policy": {
+        "citation_required": true,
+        "source_url_required": true,
+        "attribution_required": true,
+        "prose_only_output_allowed": false
+      },
+      "provenance_audit": {
+        "required": true,
+        "required_fields": [
+          "source_id",
+          "source_type",
+          "owning_agent",
+          "url",
+          "manifest_path",
+          "governance_state",
+          "source_category",
+          "priority_policy",
+          "provenance_policy"
+        ]
+      },
+      "content_safety": {
+        "raw_content_storage_allowed": false,
+        "prompt_injection_surface_allowed": false,
+        "summary_generation_allowed": false
+      },
+      "storage_policy": {
+        "memory_write_allowed": false,
+        "article_storage_allowed": false,
+        "metadata_storage_allowed": true
+      },
+      "readiness_check": {
+        "status": "disabled_pending_official_validation",
+        "official_source": false,
+        "validation_method": "manual_required",
+        "notes": "Reuters feed URL is not enabled because official RSS support needs operator verification."
+      }
+    },
+    {
+      "source_id": "alexis_cnn_top_stories_rss",
+      "contract_id": "source_ingestion_rss_feed",
+      "source_type": "rss_feed",
+      "url": "http://rss.cnn.com/rss/cnn_topstories.rss",
+      "owning_agent": "alexis",
+      "governance_state": "audit_only",
+      "refresh_policy": {
+        "type": "manual",
+        "cadence_seconds": 1800,
+        "jitter_seconds": 300,
+        "notes": "Manual newsroom RSS metadata ingestion only."
+      },
+      "source_category": {
+        "category": "top_news",
+        "topic_tags": [
+          "cnn",
+          "top_stories",
+          "breaking_news"
+        ]
+      },
+      "priority_policy": {
+        "domain": "newsroom",
+        "level": "normal",
+        "rationale": "CNN top-story metadata broadens latest-news source diversity."
+      },
+      "provenance_policy": {
+        "citation_required": true,
+        "source_url_required": true,
+        "attribution_required": true,
+        "prose_only_output_allowed": false
+      },
+      "provenance_audit": {
+        "required": true,
+        "required_fields": [
+          "source_id",
+          "source_type",
+          "owning_agent",
+          "url",
+          "manifest_path",
+          "governance_state",
+          "source_category",
+          "priority_policy",
+          "provenance_policy"
+        ]
+      },
+      "content_safety": {
+        "raw_content_storage_allowed": false,
+        "prompt_injection_surface_allowed": false,
+        "summary_generation_allowed": false
+      },
+      "storage_policy": {
+        "memory_write_allowed": false,
+        "article_storage_allowed": false,
+        "metadata_storage_allowed": true
+      },
+      "readiness_check": {
+        "status": "declared_official_rss",
+        "official_source": true,
+        "validation_method": "static_declared_feed_url",
+        "notes": "CNN RSS URL declared for live operator validation before scheduled automation."
+      }
+    },
+    {
+      "source_id": "alexis_axios_news_rss",
+      "contract_id": "source_ingestion_rss_feed",
+      "source_type": "rss_feed",
+      "url": "https://api.axios.com/feed/",
+      "owning_agent": "alexis",
+      "governance_state": "audit_only",
+      "refresh_policy": {
+        "type": "manual",
+        "cadence_seconds": 1800,
+        "jitter_seconds": 300,
+        "notes": "Manual newsroom RSS metadata ingestion only."
+      },
+      "source_category": {
+        "category": "top_news",
+        "topic_tags": [
+          "axios",
+          "politics",
+          "business",
+          "breaking_news"
+        ]
+      },
+      "priority_policy": {
+        "domain": "newsroom",
+        "level": "normal",
+        "rationale": "Axios metadata is useful for concise political and business news context."
+      },
+      "provenance_policy": {
+        "citation_required": true,
+        "source_url_required": true,
+        "attribution_required": true,
+        "prose_only_output_allowed": false
+      },
+      "provenance_audit": {
+        "required": true,
+        "required_fields": [
+          "source_id",
+          "source_type",
+          "owning_agent",
+          "url",
+          "manifest_path",
+          "governance_state",
+          "source_category",
+          "priority_policy",
+          "provenance_policy"
+        ]
+      },
+      "content_safety": {
+        "raw_content_storage_allowed": false,
+        "prompt_injection_surface_allowed": false,
+        "summary_generation_allowed": false
+      },
+      "storage_policy": {
+        "memory_write_allowed": false,
+        "article_storage_allowed": false,
+        "metadata_storage_allowed": true
+      },
+      "readiness_check": {
+        "status": "declared_official_rss",
+        "official_source": true,
+        "validation_method": "static_declared_feed_url",
+        "notes": "Axios feed URL declared for live operator validation before scheduled automation."
+      }
+    },
+    {
+      "source_id": "alexis_bbc_world_news_rss",
+      "contract_id": "source_ingestion_rss_feed",
+      "source_type": "rss_feed",
+      "url": "https://feeds.bbci.co.uk/news/world/rss.xml",
+      "owning_agent": "alexis",
+      "governance_state": "audit_only",
+      "refresh_policy": {
+        "type": "manual",
+        "cadence_seconds": 1800,
+        "jitter_seconds": 300,
+        "notes": "Manual newsroom RSS metadata ingestion only."
+      },
+      "source_category": {
+        "category": "global_news",
+        "topic_tags": [
+          "bbc",
+          "world",
+          "breaking_news",
+          "international_affairs"
+        ]
+      },
+      "priority_policy": {
+        "domain": "newsroom",
+        "level": "high",
+        "rationale": "BBC world-news metadata is useful for Alexis briefing context when explicitly fetched."
+      },
+      "provenance_policy": {
+        "citation_required": true,
+        "source_url_required": true,
+        "attribution_required": true,
+        "prose_only_output_allowed": false
+      },
+      "provenance_audit": {
+        "required": true,
+        "required_fields": [
+          "source_id",
+          "source_type",
+          "owning_agent",
+          "url",
+          "manifest_path",
+          "governance_state",
+          "source_category",
+          "priority_policy",
+          "provenance_policy"
+        ]
+      },
+      "content_safety": {
+        "raw_content_storage_allowed": false,
+        "prompt_injection_surface_allowed": false,
+        "summary_generation_allowed": false
+      },
+      "storage_policy": {
+        "memory_write_allowed": false,
+        "article_storage_allowed": false,
+        "metadata_storage_allowed": true
+      },
+      "readiness_check": {
+        "status": "declared_official_rss",
+        "official_source": true,
+        "validation_method": "static_declared_feed_url",
+        "notes": "BBC feed URL declared for live operator validation before scheduled automation."
+      }
+    },
+    {
+      "source_id": "alexis_bbc_business_news_rss",
+      "contract_id": "source_ingestion_rss_feed",
+      "source_type": "rss_feed",
+      "url": "https://feeds.bbci.co.uk/news/business/rss.xml",
+      "owning_agent": "alexis",
+      "governance_state": "audit_only",
+      "refresh_policy": {
+        "type": "manual",
+        "cadence_seconds": 1800,
+        "jitter_seconds": 300,
+        "notes": "Manual newsroom RSS metadata ingestion only."
+      },
+      "source_category": {
+        "category": "business_news",
+        "topic_tags": [
+          "bbc",
+          "business",
+          "markets",
+          "economy"
+        ]
+      },
+      "priority_policy": {
+        "domain": "newsroom",
+        "level": "normal",
+        "rationale": "Business metadata can support producer context when explicitly fetched."
+      },
+      "provenance_policy": {
+        "citation_required": true,
+        "source_url_required": true,
+        "attribution_required": true,
+        "prose_only_output_allowed": false
+      },
+      "provenance_audit": {
+        "required": true,
+        "required_fields": [
+          "source_id",
+          "source_type",
+          "owning_agent",
+          "url",
+          "manifest_path",
+          "governance_state",
+          "source_category",
+          "priority_policy",
+          "provenance_policy"
+        ]
+      },
+      "content_safety": {
+        "raw_content_storage_allowed": false,
+        "prompt_injection_surface_allowed": false,
+        "summary_generation_allowed": false
+      },
+      "storage_policy": {
+        "memory_write_allowed": false,
+        "article_storage_allowed": false,
+        "metadata_storage_allowed": true
+      },
+      "readiness_check": {
+        "status": "declared_official_rss",
+        "official_source": true,
+        "validation_method": "static_declared_feed_url",
+        "notes": "BBC feed URL declared for live operator validation before scheduled automation."
+      }
+    },
+    {
+      "source_id": "alexis_abc_news_top_stories_rss",
+      "contract_id": "source_ingestion_rss_feed",
+      "source_type": "rss_feed",
+      "url": "https://abcnews.go.com/abcnews/topstories",
+      "owning_agent": "alexis",
+      "governance_state": "audit_only",
+      "refresh_policy": {
+        "type": "manual",
+        "cadence_seconds": 1800,
+        "jitter_seconds": 300,
+        "notes": "Manual newsroom RSS metadata ingestion only."
+      },
+      "source_category": {
+        "category": "top_news",
+        "topic_tags": [
+          "abc_news",
+          "top_stories",
+          "breaking_news"
+        ]
+      },
+      "priority_policy": {
+        "domain": "newsroom",
+        "level": "normal",
+        "rationale": "ABC News top-story metadata broadens latest-news source diversity."
+      },
+      "provenance_policy": {
+        "citation_required": true,
+        "source_url_required": true,
+        "attribution_required": true,
+        "prose_only_output_allowed": false
+      },
+      "provenance_audit": {
+        "required": true,
+        "required_fields": [
+          "source_id",
+          "source_type",
+          "owning_agent",
+          "url",
+          "manifest_path",
+          "governance_state",
+          "source_category",
+          "priority_policy",
+          "provenance_policy"
+        ]
+      },
+      "content_safety": {
+        "raw_content_storage_allowed": false,
+        "prompt_injection_surface_allowed": false,
+        "summary_generation_allowed": false
+      },
+      "storage_policy": {
+        "memory_write_allowed": false,
+        "article_storage_allowed": false,
+        "metadata_storage_allowed": true
+      },
+      "readiness_check": {
+        "status": "declared_official_rss",
+        "official_source": true,
+        "validation_method": "static_declared_feed_url",
+        "notes": "ABC News feed URL declared for live operator validation before scheduled automation."
+      }
+    },
+    {
+      "source_id": "alexis_nyt_world_rss",
+      "contract_id": "source_ingestion_rss_feed",
+      "source_type": "rss_feed",
+      "url": "https://rss.nytimes.com/services/xml/rss/nyt/World.xml",
+      "owning_agent": "alexis",
+      "governance_state": "audit_only",
+      "refresh_policy": {
+        "type": "manual",
+        "cadence_seconds": 3600,
+        "jitter_seconds": 300,
+        "notes": "Manual newsroom RSS metadata ingestion only; secondary analysis source."
+      },
+      "source_category": {
+        "category": "world",
+        "topic_tags": [
+          "nyt",
+          "world",
+          "analysis",
+          "secondary_source"
+        ]
+      },
+      "priority_policy": {
+        "domain": "newsroom",
+        "level": "normal",
+        "source_role": "secondary_analysis",
+        "rationale": "NYT World metadata is high-authority context but is not the first-line breaking-news backbone."
+      },
+      "provenance_policy": {
+        "citation_required": true,
+        "source_url_required": true,
+        "attribution_required": true,
+        "prose_only_output_allowed": false
+      },
+      "provenance_audit": {
+        "required": true,
+        "required_fields": [
+          "source_id",
+          "source_type",
+          "owning_agent",
+          "url",
+          "manifest_path",
+          "governance_state",
+          "source_category",
+          "priority_policy",
+          "provenance_policy"
+        ]
+      },
+      "content_safety": {
+        "raw_content_storage_allowed": false,
+        "prompt_injection_surface_allowed": false,
+        "summary_generation_allowed": false
+      },
+      "storage_policy": {
+        "memory_write_allowed": false,
+        "article_storage_allowed": false,
+        "metadata_storage_allowed": true
+      },
+      "readiness_check": {
+        "status": "declared_official_rss",
+        "official_source": true,
+        "validation_method": "static_declared_feed_url",
+        "notes": "NYT public RSS URL declared for metadata-only operator validation; secondary source only."
+      }
+    },
+    {
+      "source_id": "alexis_nyt_us_rss",
+      "contract_id": "source_ingestion_rss_feed",
+      "source_type": "rss_feed",
+      "url": "https://rss.nytimes.com/services/xml/rss/nyt/US.xml",
+      "owning_agent": "alexis",
+      "governance_state": "audit_only",
+      "refresh_policy": {
+        "type": "manual",
+        "cadence_seconds": 3600,
+        "jitter_seconds": 300,
+        "notes": "Manual newsroom RSS metadata ingestion only; secondary analysis source."
+      },
+      "source_category": {
+        "category": "us_news",
+        "topic_tags": [
+          "nyt",
+          "us_news",
+          "analysis",
+          "secondary_source"
+        ]
+      },
+      "priority_policy": {
+        "domain": "newsroom",
+        "level": "normal",
+        "source_role": "secondary_analysis",
+        "rationale": "NYT U.S. metadata adds high-authority context without becoming the primary breaking-news backbone."
+      },
+      "provenance_policy": {
+        "citation_required": true,
+        "source_url_required": true,
+        "attribution_required": true,
+        "prose_only_output_allowed": false
+      },
+      "provenance_audit": {
+        "required": true,
+        "required_fields": [
+          "source_id",
+          "source_type",
+          "owning_agent",
+          "url",
+          "manifest_path",
+          "governance_state",
+          "source_category",
+          "priority_policy",
+          "provenance_policy"
+        ]
+      },
+      "content_safety": {
+        "raw_content_storage_allowed": false,
+        "prompt_injection_surface_allowed": false,
+        "summary_generation_allowed": false
+      },
+      "storage_policy": {
+        "memory_write_allowed": false,
+        "article_storage_allowed": false,
+        "metadata_storage_allowed": true
+      },
+      "readiness_check": {
+        "status": "declared_official_rss",
+        "official_source": true,
+        "validation_method": "static_declared_feed_url",
+        "notes": "NYT public RSS URL declared for metadata-only operator validation; secondary source only."
+      }
+    },
+    {
+      "source_id": "alexis_nyt_politics_rss",
+      "contract_id": "source_ingestion_rss_feed",
+      "source_type": "rss_feed",
+      "url": "https://rss.nytimes.com/services/xml/rss/nyt/Politics.xml",
+      "owning_agent": "alexis",
+      "governance_state": "audit_only",
+      "refresh_policy": {
+        "type": "manual",
+        "cadence_seconds": 3600,
+        "jitter_seconds": 300,
+        "notes": "Manual newsroom RSS metadata ingestion only; secondary analysis source."
+      },
+      "source_category": {
+        "category": "politics",
+        "topic_tags": [
+          "nyt",
+          "politics",
+          "us_news",
+          "analysis",
+          "secondary_source"
+        ]
+      },
+      "priority_policy": {
+        "domain": "newsroom",
+        "level": "normal",
+        "source_role": "secondary_analysis",
+        "rationale": "NYT Politics metadata supports analysis and context without becoming the primary breaking-news backbone."
+      },
+      "provenance_policy": {
+        "citation_required": true,
+        "source_url_required": true,
+        "attribution_required": true,
+        "prose_only_output_allowed": false
+      },
+      "provenance_audit": {
+        "required": true,
+        "required_fields": [
+          "source_id",
+          "source_type",
+          "owning_agent",
+          "url",
+          "manifest_path",
+          "governance_state",
+          "source_category",
+          "priority_policy",
+          "provenance_policy"
+        ]
+      },
+      "content_safety": {
+        "raw_content_storage_allowed": false,
+        "prompt_injection_surface_allowed": false,
+        "summary_generation_allowed": false
+      },
+      "storage_policy": {
+        "memory_write_allowed": false,
+        "article_storage_allowed": false,
+        "metadata_storage_allowed": true
+      },
+      "readiness_check": {
+        "status": "declared_official_rss",
+        "official_source": true,
+        "validation_method": "static_declared_feed_url",
+        "notes": "NYT public RSS URL declared for metadata-only operator validation; secondary source only."
+      }
+    },
+    {
+      "source_id": "alexis_newsnation_rss",
+      "contract_id": "source_ingestion_rss_feed",
+      "source_type": "rss_feed",
+      "url": "https://www.newsnationnow.com/feed/",
+      "owning_agent": "alexis",
+      "governance_state": "disabled",
+      "refresh_policy": {
+        "type": "manual",
+        "cadence_seconds": 3600,
+        "jitter_seconds": 300,
+        "notes": "Disabled until official RSS reliability is manually verified."
+      },
+      "source_category": {
+        "category": "top_news",
+        "topic_tags": [
+          "newsnation",
+          "top_news"
+        ]
+      },
+      "priority_policy": {
+        "domain": "newsroom",
+        "level": "normal",
+        "rationale": "NewsNation is an Alexis-relevant newsroom source, but this feed remains disabled pending verification."
+      },
+      "provenance_policy": {
+        "citation_required": true,
+        "source_url_required": true,
+        "attribution_required": true,
+        "prose_only_output_allowed": false
+      },
+      "provenance_audit": {
+        "required": true,
+        "required_fields": [
+          "source_id",
+          "source_type",
+          "owning_agent",
+          "url",
+          "manifest_path",
+          "governance_state",
+          "source_category",
+          "priority_policy",
+          "provenance_policy"
+        ]
+      },
+      "content_safety": {
+        "raw_content_storage_allowed": false,
+        "prompt_injection_surface_allowed": false,
+        "summary_generation_allowed": false
+      },
+      "storage_policy": {
+        "memory_write_allowed": false,
+        "article_storage_allowed": false,
+        "metadata_storage_allowed": true
+      },
+      "readiness_check": {
+        "status": "disabled_pending_official_validation",
+        "official_source": false,
+        "validation_method": "manual_required",
+        "notes": "NewsNation feed URL is declared but disabled until operator validation confirms it is acceptable."
+      }
+    },
+    {
+      "source_id": "alexis_foreign_affairs_rss",
+      "contract_id": "source_ingestion_rss_feed",
+      "source_type": "rss_feed",
+      "url": "https://www.foreignaffairs.com/rss.xml",
+      "owning_agent": "alexis",
+      "governance_state": "audit_only",
+      "refresh_policy": {
+        "type": "manual",
+        "cadence_seconds": 3600,
+        "jitter_seconds": 300,
+        "notes": "Manual foreign-affairs RSS metadata ingestion only; secondary analysis source."
+      },
+      "source_category": {
+        "category": "foreign_affairs",
+        "topic_tags": [
+          "foreign_affairs",
+          "foreign_policy",
+          "geopolitics",
+          "international_affairs",
+          "analysis",
+          "secondary_source"
+        ]
+      },
+      "priority_policy": {
+        "domain": "newsroom",
+        "level": "high",
+        "source_role": "secondary_analysis",
+        "rationale": "Foreign Affairs metadata improves governed foreign-policy and geopolitical context without becoming a breaking-news backbone."
+      },
+      "provenance_policy": {
+        "citation_required": true,
+        "source_url_required": true,
+        "attribution_required": true,
+        "prose_only_output_allowed": false
+      },
+      "provenance_audit": {
+        "required": true,
+        "required_fields": [
+          "source_id",
+          "source_type",
+          "owning_agent",
+          "url",
+          "manifest_path",
+          "governance_state",
+          "source_category",
+          "priority_policy",
+          "provenance_policy"
+        ]
+      },
+      "content_safety": {
+        "raw_content_storage_allowed": false,
+        "prompt_injection_surface_allowed": false,
+        "summary_generation_allowed": false
+      },
+      "storage_policy": {
+        "memory_write_allowed": false,
+        "article_storage_allowed": false,
+        "metadata_storage_allowed": true
+      },
+      "readiness_check": {
+        "status": "declared_public_rss",
+        "official_source": true,
+        "validation_method": "static_declared_feed_url",
+        "notes": "Foreign Affairs RSS URL declared for metadata-only operator validation; secondary analysis source only."
+      }
+    },
+    {
+      "source_id": "alexis_foreign_policy_rss",
+      "contract_id": "source_ingestion_rss_feed",
+      "source_type": "rss_feed",
+      "url": "https://foreignpolicy.com/feed/",
+      "owning_agent": "alexis",
+      "governance_state": "audit_only",
+      "refresh_policy": {
+        "type": "manual",
+        "cadence_seconds": 3600,
+        "jitter_seconds": 300,
+        "notes": "Manual foreign-policy RSS metadata ingestion only; secondary analysis source."
+      },
+      "source_category": {
+        "category": "foreign_policy",
+        "topic_tags": [
+          "foreign_policy",
+          "global_affairs",
+          "geopolitics",
+          "international_affairs",
+          "analysis",
+          "secondary_source"
+        ]
+      },
+      "priority_policy": {
+        "domain": "newsroom",
+        "level": "high",
+        "source_role": "secondary_analysis",
+        "rationale": "Foreign Policy metadata broadens governed global-affairs and foreign-policy context."
+      },
+      "provenance_policy": {
+        "citation_required": true,
+        "source_url_required": true,
+        "attribution_required": true,
+        "prose_only_output_allowed": false
+      },
+      "provenance_audit": {
+        "required": true,
+        "required_fields": [
+          "source_id",
+          "source_type",
+          "owning_agent",
+          "url",
+          "manifest_path",
+          "governance_state",
+          "source_category",
+          "priority_policy",
+          "provenance_policy"
+        ]
+      },
+      "content_safety": {
+        "raw_content_storage_allowed": false,
+        "prompt_injection_surface_allowed": false,
+        "summary_generation_allowed": false
+      },
+      "storage_policy": {
+        "memory_write_allowed": false,
+        "article_storage_allowed": false,
+        "metadata_storage_allowed": true
+      },
+      "readiness_check": {
+        "status": "declared_public_rss",
+        "official_source": true,
+        "validation_method": "static_declared_feed_url",
+        "notes": "Foreign Policy feed URL declared for metadata-only operator validation; secondary analysis source only."
+      }
+    },
+    {
+      "source_id": "alexis_chatham_house_rss",
+      "contract_id": "source_ingestion_rss_feed",
+      "source_type": "rss_feed",
+      "url": "https://www.chathamhouse.org/rss.xml",
+      "owning_agent": "alexis",
+      "governance_state": "audit_only",
+      "refresh_policy": {
+        "type": "manual",
+        "cadence_seconds": 3600,
+        "jitter_seconds": 300,
+        "notes": "Manual international-affairs think-tank RSS metadata ingestion only."
+      },
+      "source_category": {
+        "category": "foreign_affairs",
+        "topic_tags": [
+          "chatham_house",
+          "foreign_affairs",
+          "international_affairs",
+          "geopolitics",
+          "diplomacy",
+          "analysis",
+          "secondary_source"
+        ]
+      },
+      "priority_policy": {
+        "domain": "newsroom",
+        "level": "normal",
+        "source_role": "secondary_analysis",
+        "rationale": "Chatham House metadata adds governed international-affairs and diplomacy context."
+      },
+      "provenance_policy": {
+        "citation_required": true,
+        "source_url_required": true,
+        "attribution_required": true,
+        "prose_only_output_allowed": false
+      },
+      "provenance_audit": {
+        "required": true,
+        "required_fields": [
+          "source_id",
+          "source_type",
+          "owning_agent",
+          "url",
+          "manifest_path",
+          "governance_state",
+          "source_category",
+          "priority_policy",
+          "provenance_policy"
+        ]
+      },
+      "content_safety": {
+        "raw_content_storage_allowed": false,
+        "prompt_injection_surface_allowed": false,
+        "summary_generation_allowed": false
+      },
+      "storage_policy": {
+        "memory_write_allowed": false,
+        "article_storage_allowed": false,
+        "metadata_storage_allowed": true
+      },
+      "readiness_check": {
+        "status": "declared_official_rss",
+        "official_source": true,
+        "validation_method": "static_declared_feed_url",
+        "notes": "Chatham House RSS URL declared for metadata-only operator validation."
+      }
+    },
+    {
+      "source_id": "alexis_ecfr_rss",
+      "contract_id": "source_ingestion_rss_feed",
+      "source_type": "rss_feed",
+      "url": "https://ecfr.eu/feed/",
+      "owning_agent": "alexis",
+      "governance_state": "audit_only",
+      "refresh_policy": {
+        "type": "manual",
+        "cadence_seconds": 3600,
+        "jitter_seconds": 300,
+        "notes": "Manual European foreign-policy RSS metadata ingestion only."
+      },
+      "source_category": {
+        "category": "foreign_policy",
+        "topic_tags": [
+          "ecfr",
+          "foreign_policy",
+          "europe",
+          "diplomacy",
+          "middle_east",
+          "geopolitics",
+          "analysis",
+          "secondary_source"
+        ]
+      },
+      "priority_policy": {
+        "domain": "newsroom",
+        "level": "normal",
+        "source_role": "secondary_analysis",
+        "rationale": "ECFR metadata adds governed European, MENA, and global foreign-policy context."
+      },
+      "provenance_policy": {
+        "citation_required": true,
+        "source_url_required": true,
+        "attribution_required": true,
+        "prose_only_output_allowed": false
+      },
+      "provenance_audit": {
+        "required": true,
+        "required_fields": [
+          "source_id",
+          "source_type",
+          "owning_agent",
+          "url",
+          "manifest_path",
+          "governance_state",
+          "source_category",
+          "priority_policy",
+          "provenance_policy"
+        ]
+      },
+      "content_safety": {
+        "raw_content_storage_allowed": false,
+        "prompt_injection_surface_allowed": false,
+        "summary_generation_allowed": false
+      },
+      "storage_policy": {
+        "memory_write_allowed": false,
+        "article_storage_allowed": false,
+        "metadata_storage_allowed": true
+      },
+      "readiness_check": {
+        "status": "declared_official_rss",
+        "official_source": true,
+        "validation_method": "static_declared_feed_url",
+        "notes": "ECFR feed URL declared from its RSS subscription page for metadata-only operator validation."
+      }
+    },
+    {
+      "source_id": "alexis_sipri_rss",
+      "contract_id": "source_ingestion_rss_feed",
+      "source_type": "rss_feed",
+      "url": "https://www.sipri.org/rss.xml",
+      "owning_agent": "alexis",
+      "governance_state": "audit_only",
+      "refresh_policy": {
+        "type": "manual",
+        "cadence_seconds": 3600,
+        "jitter_seconds": 300,
+        "notes": "Manual conflict, arms control, and security RSS metadata ingestion only."
+      },
+      "source_category": {
+        "category": "security_policy",
+        "topic_tags": [
+          "sipri",
+          "security",
+          "conflict",
+          "arms_control",
+          "geopolitics",
+          "international_affairs",
+          "analysis",
+          "secondary_source"
+        ]
+      },
+      "priority_policy": {
+        "domain": "newsroom",
+        "level": "normal",
+        "source_role": "secondary_analysis",
+        "rationale": "SIPRI metadata adds governed security, conflict, arms-control, and geopolitical context."
+      },
+      "provenance_policy": {
+        "citation_required": true,
+        "source_url_required": true,
+        "attribution_required": true,
+        "prose_only_output_allowed": false
+      },
+      "provenance_audit": {
+        "required": true,
+        "required_fields": [
+          "source_id",
+          "source_type",
+          "owning_agent",
+          "url",
+          "manifest_path",
+          "governance_state",
+          "source_category",
+          "priority_policy",
+          "provenance_policy"
+        ]
+      },
+      "content_safety": {
+        "raw_content_storage_allowed": false,
+        "prompt_injection_surface_allowed": false,
+        "summary_generation_allowed": false
+      },
+      "storage_policy": {
+        "memory_write_allowed": false,
+        "article_storage_allowed": false,
+        "metadata_storage_allowed": true
+      },
+      "readiness_check": {
+        "status": "declared_official_rss",
+        "official_source": true,
+        "validation_method": "static_declared_feed_url",
+        "notes": "SIPRI RSS URL declared for metadata-only operator validation."
+      }
+    },
+    {
+      "source_id": "alexis_war_on_the_rocks_rss",
+      "contract_id": "source_ingestion_rss_feed",
+      "source_type": "rss_feed",
+      "url": "https://warontherocks.com/feed/",
+      "owning_agent": "alexis",
+      "governance_state": "audit_only",
+      "refresh_policy": {
+        "type": "manual",
+        "cadence_seconds": 3600,
+        "jitter_seconds": 300,
+        "notes": "Manual national-security and foreign-policy RSS metadata ingestion only."
+      },
+      "source_category": {
+        "category": "security_policy",
+        "topic_tags": [
+          "war_on_the_rocks",
+          "national_security",
+          "foreign_policy",
+          "defense",
+          "geopolitics",
+          "analysis",
+          "secondary_source"
+        ]
+      },
+      "priority_policy": {
+        "domain": "newsroom",
+        "level": "normal",
+        "source_role": "secondary_analysis",
+        "rationale": "War on the Rocks metadata adds governed national-security and foreign-policy analysis context."
+      },
+      "provenance_policy": {
+        "citation_required": true,
+        "source_url_required": true,
+        "attribution_required": true,
+        "prose_only_output_allowed": false
+      },
+      "provenance_audit": {
+        "required": true,
+        "required_fields": [
+          "source_id",
+          "source_type",
+          "owning_agent",
+          "url",
+          "manifest_path",
+          "governance_state",
+          "source_category",
+          "priority_policy",
+          "provenance_policy"
+        ]
+      },
+      "content_safety": {
+        "raw_content_storage_allowed": false,
+        "prompt_injection_surface_allowed": false,
+        "summary_generation_allowed": false
+      },
+      "storage_policy": {
+        "memory_write_allowed": false,
+        "article_storage_allowed": false,
+        "metadata_storage_allowed": true
+      },
+      "readiness_check": {
+        "status": "declared_public_rss",
+        "official_source": true,
+        "validation_method": "static_declared_feed_url",
+        "notes": "War on the Rocks feed URL declared for metadata-only operator validation; secondary analysis source only."
+      }
+    }
+  ]
+}

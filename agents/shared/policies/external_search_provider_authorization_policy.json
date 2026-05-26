@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "id": "external_search_provider_authorization_policy",
+  "semantic_type": "external_search",
+  "state_policy": {
+    "blocked": {
+      "live_provider_execution_authorized": false,
+      "external_call_allowed": false,
+      "cost_allowed": false,
+      "audit_required": true
+    },
+    "audit_only": {
+      "live_provider_execution_authorized": false,
+      "external_call_allowed": false,
+      "cost_allowed": false,
+      "audit_required": true
+    },
+    "allowed": {
+      "live_provider_execution_authorized": true,
+      "external_call_allowed": true,
+      "cost_allowed": true,
+      "audit_required": true
+    }
+  },
+  "runtime_bounds": {
+    "authorization_required_before_provider_execution": true,
+    "authorization_must_not_select_provider": true,
+    "authorization_must_not_select_semantic_intent": true,
+    "fallback_execution_allowed": false,
+    "silent_retrieval_escalation_allowed": false,
+    "memory_writes_allowed": false,
+    "content_safe_audit_required": true
+  }
+}

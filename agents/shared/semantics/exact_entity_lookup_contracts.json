@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "contracts": [
+    {
+      "id": "exact_entity_lookup",
+      "operation_id": "exact_entity_lookup",
+      "lookup_type": "exact_entity_lookup",
+      "enabled": true,
+      "description": "Declarative contract for bounded exact-name entity lookup requested by an explicit planner decision.",
+      "inputs": {
+        "required": [
+          "entity_name"
+        ],
+        "optional": [
+          "entity_type",
+          "workflow_topic",
+          "source_scope"
+        ]
+      },
+      "bounded_source_reference": {
+        "field": "source_scope",
+        "raw_target_allowed": false,
+        "description": "Agent-local source scope reference only; raw database paths and private source targets must not be exposed by this shared contract."
+      },
+      "result_expectations": {
+        "max_records": 1,
+        "match_mode": "exact_name_only",
+        "returns": "bounded_context_record",
+        "empty_result_allowed": true
+      },
+      "forbidden_behaviors": [
+        "fuzzy_search",
+        "keyword_search",
+        "semantic_search",
+        "ranking",
+        "embeddings",
+        "indexing",
+        "hidden_rag",
+        "heuristic_routing",
+        "autonomous_retrieval",
+        "writes"
+      ],
+      "fail_closed": {
+        "missing_required_input": true,
+        "unknown_lookup_type": true,
+        "unavailable_source_scope": true,
+        "ambiguous_result": true,
+        "unauthorized_behavior": true
+      },
+      "telemetry_safe_provenance_fields": [
+        "lookup_id",
+        "operation_id",
+        "lookup_type",
+        "entity_type",
+        "workflow_topic",
+        "source_scope",
+        "retrieval_executed",
+        "records_returned",
+        "skipped_reasons"
+      ],
+      "telemetry_forbidden_fields": [
+        "entity_name",
+        "query",
+        "lookup_value",
+        "record_contents",
+        "rendered_context",
+        "raw_source_target",
+        "raw_database_path"
+      ]
+    }
+  ]
+}

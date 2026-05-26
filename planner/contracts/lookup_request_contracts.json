@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "contracts": [
+    {
+      "id": "bounded_lookup_context_capability",
+      "planner_contract": {
+        "required_fields": [
+          "entity_name"
+        ],
+        "bounded_entity_search_required_any_fields": [
+          "search_topic",
+          "query_intent"
+        ],
+        "bounded_entity_search_optional_fields": [
+          "constraints",
+          "max_results"
+        ],
+        "optional_fields": [
+          "workflow_topic"
+        ],
+        "agent_policy_fields_forbidden": [
+          "entity_type",
+          "source_scope"
+        ]
+      }
+    }
+  ]
+}

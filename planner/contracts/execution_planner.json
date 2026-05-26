@@ -1,0 +1,85 @@
+{
+  "name": "execution_planner",
+  "description": "Analyzes the generic computational shape of a request. Does not classify artifact type or choose models.",
+  "return_instruction": "Return ONLY valid JSON. No markdown. No prose.",
+  "schema": {
+    "type": "object",
+    "required": [
+      "task_family",
+      "reasoning_depth",
+      "style_sensitivity",
+      "requires_current_information",
+      "requires_web",
+      "requires_source_fidelity",
+      "privacy_sensitivity",
+      "latency_preference",
+      "output_risk",
+      "input_type",
+      "expected_output_type",
+      "requires_approval",
+      "reason"
+    ],
+    "properties": {
+      "task_family": {
+        "type": "string",
+        "enum": ["translation", "rewriting", "summarization", "drafting", "research", "general"]
+      },
+      "reasoning_depth": {
+        "type": "string",
+        "enum": ["low", "medium", "deep"]
+      },
+      "style_sensitivity": {
+        "type": "string",
+        "enum": ["low", "medium", "high"]
+      },
+      "requires_current_information": {
+        "type": "boolean"
+      },
+      "requires_web": {
+        "type": "boolean"
+      },
+      "requires_source_fidelity": {
+        "type": "boolean"
+      },
+      "privacy_sensitivity": {
+        "type": "string",
+        "enum": ["low", "medium", "high"]
+      },
+      "latency_preference": {
+        "type": "string",
+        "enum": ["fast", "balanced", "best"]
+      },
+      "output_risk": {
+        "type": "string",
+        "enum": ["low", "medium", "high"]
+      },
+      "input_type": {
+        "type": "string",
+        "enum": ["short_text", "long_text", "translation", "query", "unknown"]
+      },
+      "expected_output_type": {
+        "type": "string",
+        "enum": ["artifact", "action", "translation", "summary", "general_answer"]
+      },
+      "requires_approval": {
+        "type": "boolean"
+      },
+      "lookup_metadata": {
+        "type": ["object", "null"],
+        "properties": {
+          "entity_name": {
+            "type": "string"
+          },
+          "workflow_topic": {
+            "type": ["string", "null"]
+          }
+        },
+        "additionalProperties": false
+      },
+      "reason": {
+        "type": "string"
+      }
+    },
+    "additionalProperties": false
+  }
+}

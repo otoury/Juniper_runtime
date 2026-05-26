@@ -1,0 +1,484 @@
+{
+  "lower_third": {
+    "description": "Broadcast lower-third banner.",
+    "semantic_class": "editorial_microcopy",
+    "aliases": [
+      "chyron",
+      "banner",
+      "lower third"
+    ],
+    "intent_examples": [
+      "write a lower third",
+      "make a chyron",
+      "create a banner",
+      "draft a lower third",
+      "write a tv banner"
+    ],
+    "creation_intent_examples": [
+      "write a lower third",
+      "draft a lower third",
+      "create a lower third",
+      "make a chyron"
+    ],
+    "bounded": true
+  },
+  "email_draft": {
+    "description": "Booking or outreach email draft.",
+    "semantic_class": "editorial_outreach",
+    "aliases": [
+      "booking email",
+      "outreach email",
+      "guest email",
+      "producer email"
+    ],
+    "intent_examples": [
+      "draft an outreach email",
+      "write a booking email",
+      "email the guest",
+      "draft an email to one of them",
+      "write a guest outreach note"
+    ],
+    "creation_intent_examples": [
+      "draft an email",
+      "write an email",
+      "draft an outreach email",
+      "write a booking email"
+    ],
+    "bounded": true
+  },
+  "guest_list": {
+    "description": "Structured list of possible guests.",
+    "semantic_class": "booking_research",
+    "semantic_signals": {
+      "verbs": [
+        "find",
+        "book",
+        "suggest",
+        "recommend"
+      ],
+      "entities": [
+        "guest",
+        "guests",
+        "expert",
+        "experts",
+        "analyst",
+        "panel"
+      ],
+      "domains": [
+        "segment",
+        "show",
+        "tv",
+        "news"
+      ]
+    },
+    "aliases": [
+      "guest ideas",
+      "booking list",
+      "expert list",
+      "guest suggestions"
+    ],
+    "intent_examples": [
+      "find me guests",
+      "give me guest ideas",
+      "who can discuss this",
+      "find experts for the segment",
+      "guest list for ai regulation"
+    ],
+    "bounded": false
+  },
+  "guest_candidate_list": {
+    "description": "Structured runtime list of guest candidates normalized from bounded sources.",
+    "semantic_class": "booking_research_candidate_artifact",
+    "semantic_signals": {
+      "intent_fields": [
+        "candidate_count",
+        "candidates",
+        "source_scope",
+        "source_scopes",
+        "provenance"
+      ],
+      "enrichment_fields": [
+        "has_email_contact",
+        "email_refs",
+        "has_video_presence",
+        "video_presence_refs",
+        "contact_confidence",
+        "on_air_suitability_signals"
+      ]
+    },
+    "aliases": [
+      "guest candidate list",
+      "candidate list",
+      "normalized guest candidates"
+    ],
+    "intent_examples": [
+      "normalize raw external discovery into guest candidates",
+      "create a guest candidate list",
+      "materialize guest candidates"
+    ],
+    "creation_intent_examples": [
+      "create a guest candidate list",
+      "materialize guest candidates"
+    ],
+    "bounded": true
+  },
+  "web_guest_discovery_query_plan": {
+    "description": "Typed declaration for future governed web guest discovery query planning.",
+    "semantic_class": "booking_research_plan",
+    "semantic_signals": {
+      "intent_fields": [
+        "discovery_intent",
+        "topic_entity_focus",
+        "preferred_guest_traits",
+        "preferred_signals",
+        "max_queries"
+      ],
+      "preferred_signal_ids": [
+        "has_email_contact",
+        "has_video_presence"
+      ]
+    },
+    "aliases": [
+      "web guest discovery query plan",
+      "guest discovery query plan",
+      "web discovery plan"
+    ],
+    "intent_examples": [
+      "create a web guest discovery query plan",
+      "plan web discovery for guests",
+      "prepare a guest discovery query plan"
+    ],
+    "creation_intent_examples": [
+      "create a web guest discovery query plan",
+      "prepare a web guest discovery query plan"
+    ],
+    "bounded": true
+  },
+  "guest_external_discovery_handoff": {
+    "description": "Typed Alexis-owned provider-free handoff from guest DB adequacy to external_search request preparation.",
+    "semantic_class": "external_search_request_handoff",
+    "semantic_signals": {
+      "intent_fields": [
+        "status",
+        "handoff_eligible",
+        "reason_codes",
+        "discovery_reason_codes",
+        "target_semantic_type",
+        "prepared_request",
+        "query_materialization",
+        "provenance"
+      ],
+      "external_call_performed": false,
+      "provider_execution_allowed": false,
+      "handoff_is_execution": false,
+      "contact_scraping_allowed": false
+    },
+    "aliases": [
+      "guest external discovery handoff",
+      "guest to external search handoff",
+      "external guest discovery handoff"
+    ],
+    "intent_examples": [
+      "record guest external discovery handoff",
+      "prepare an external search handoff from guest DB adequacy"
+    ],
+    "creation_intent_examples": [
+      "record guest external discovery handoff"
+    ],
+    "bounded": true
+  },
+  "external_discovery_result_set": {
+    "description": "Typed raw external discovery result set captured before domain normalization.",
+    "semantic_class": "external_discovery_raw_result",
+    "semantic_signals": {
+      "intent_fields": [
+        "provider_metadata",
+        "raw_provider_payload",
+        "raw_results",
+        "source_refs",
+        "citations",
+        "provenance"
+      ],
+      "normalization_target": null
+    },
+    "aliases": [
+      "external discovery result set",
+      "raw external discovery result",
+      "external discovery results"
+    ],
+    "intent_examples": [
+      "record raw external discovery results",
+      "create an external discovery result set",
+      "store raw provider discovery output"
+    ],
+    "creation_intent_examples": [
+      "record raw external discovery results",
+      "create an external discovery result set"
+    ],
+    "bounded": true
+  },
+  "search_api_result_set": {
+    "description": "Typed raw search_api result set captured before summarization or domain normalization.",
+    "semantic_class": "search_api_raw_result",
+    "semantic_signals": {
+      "intent_fields": [
+        "provider_id",
+        "provider_type",
+        "query",
+        "results",
+        "source_refs",
+        "citations",
+        "external_call_performed",
+        "dry_run",
+        "cost_incurred",
+        "provenance"
+      ],
+      "normalization_target": null
+    },
+    "aliases": [
+      "search api result set",
+      "raw search api result",
+      "raw search results"
+    ],
+    "intent_examples": [
+      "record raw search_api results",
+      "create a search_api result set",
+      "store raw search provider output"
+    ],
+    "creation_intent_examples": [
+      "record raw search_api results",
+      "create a search_api result set"
+    ],
+    "bounded": true
+  },
+  "external_search_result_set": {
+    "description": "Typed governed external-search result boundary before provider integration.",
+    "semantic_class": "external_search_raw_result",
+    "semantic_signals": {
+      "intent_fields": [
+        "search_id",
+        "query",
+        "raw_results",
+        "source_refs",
+        "citations",
+        "result_lineage",
+        "merge_metadata",
+        "external_call_performed",
+        "cost_incurred",
+        "provenance"
+      ],
+      "normalization_target": null,
+      "provider_integration_allowed": false,
+      "bounded_result_set_merge_allowed": true
+    },
+    "aliases": [
+      "external search result set",
+      "raw external search result",
+      "governed external search results"
+    ],
+    "intent_examples": [
+      "record governed external search results",
+      "create an external search result set",
+      "store raw external search output"
+    ],
+    "creation_intent_examples": [
+      "record governed external search results",
+      "create an external search result set"
+    ],
+    "bounded": true
+  },
+  "external_search_execution_receipt": {
+    "description": "Typed audit receipt for external-search provider execution attempts.",
+    "semantic_class": "external_search_audit_provenance",
+    "semantic_signals": {
+      "intent_fields": [
+        "receipt_id",
+        "receipt_ref",
+        "request_id",
+        "search_id",
+        "provider_id",
+        "authorization_decision",
+        "execution_state",
+        "timing",
+        "bounds",
+        "normalized_result_metadata",
+        "failure",
+        "result_artifact_ref"
+      ],
+      "normalization_target": null
+    },
+    "aliases": [
+      "external search execution receipt",
+      "external search audit receipt"
+    ],
+    "intent_examples": [
+      "record an external search execution receipt",
+      "audit an external-search provider attempt"
+    ],
+    "creation_intent_examples": [
+      "record an external search execution receipt"
+    ],
+    "bounded": true
+  },
+  "insufficient_coverage_result": {
+    "description": "Typed result for source coverage insufficiency before escalation or fallback.",
+    "semantic_class": "source_coverage_result",
+    "semantic_signals": {
+      "intent_fields": [
+        "coverage_status",
+        "reason",
+        "metrics",
+        "source_refs",
+        "retrieval_metadata",
+        "provenance"
+      ],
+      "fallback_execution_allowed": false
+    },
+    "aliases": [
+      "insufficient coverage result",
+      "source coverage result",
+      "coverage insufficiency result"
+    ],
+    "intent_examples": [
+      "record insufficient source coverage",
+      "create an insufficient coverage result"
+    ],
+    "creation_intent_examples": [
+      "record insufficient source coverage"
+    ],
+    "bounded": true
+  },
+  "rss_coverage_adequacy": {
+    "description": "Typed adequacy assessment for cached RSS source coverage.",
+    "semantic_class": "source_coverage_result",
+    "semantic_signals": {
+      "intent_fields": [
+        "adequate",
+        "outcome",
+        "metrics",
+        "policy",
+        "source_refs",
+        "fallback_eligibility",
+        "retrieval_metadata",
+        "provenance"
+      ],
+      "fallback_execution_allowed": false
+    },
+    "aliases": [
+      "rss coverage adequacy",
+      "rss adequacy result",
+      "source coverage adequacy"
+    ],
+    "intent_examples": [
+      "record RSS source coverage adequacy",
+      "create an RSS adequacy result"
+    ],
+    "creation_intent_examples": [
+      "record RSS source coverage adequacy"
+    ],
+    "bounded": true
+  },
+  "rss_external_search_handoff": {
+    "description": "Typed provider-free handoff from RSS adequacy governance to external_search request preparation.",
+    "semantic_class": "external_search_request_handoff",
+    "semantic_signals": {
+      "intent_fields": [
+        "status",
+        "handoff_eligible",
+        "reason_codes",
+        "target_semantic_type",
+        "prepared_request",
+        "query_materialization",
+        "provenance"
+      ],
+      "external_call_performed": false,
+      "provider_execution_allowed": false,
+      "handoff_is_execution": false
+    },
+    "aliases": [
+      "rss external search handoff",
+      "rss to external search handoff",
+      "external search handoff"
+    ],
+    "intent_examples": [
+      "record RSS external search handoff",
+      "prepare an external search handoff from RSS adequacy"
+    ],
+    "creation_intent_examples": [
+      "record RSS external search handoff"
+    ],
+    "bounded": true
+  },
+  "rss_cloud_escalation_result": {
+    "description": "Typed governed cloud fallback escalation decision after RSS coverage adequacy evaluation.",
+    "semantic_class": "source_coverage_result",
+    "semantic_signals": {
+      "intent_fields": [
+        "workflow_id",
+        "source_artifact_type",
+        "source_scope",
+        "status",
+        "eligible",
+        "execution_allowed",
+        "fallback_eligibility",
+        "provider",
+        "authorization",
+        "provenance"
+      ],
+      "external_call_performed": false,
+      "delivery_performed": false
+    },
+    "aliases": [
+      "rss cloud escalation result",
+      "rss cloud fallback decision",
+      "rss fallback escalation result"
+    ],
+    "intent_examples": [
+      "record RSS cloud fallback escalation decision",
+      "create an RSS cloud escalation result"
+    ],
+    "creation_intent_examples": [
+      "record RSS cloud fallback escalation decision"
+    ],
+    "bounded": true
+  },
+  "producer_note": {
+    "description": "Internal producer or control-room note.",
+    "semantic_class": "internal_workflow_note",
+    "aliases": [
+      "producer note",
+      "control room note",
+      "newsroom note"
+    ],
+    "intent_examples": [
+      "write a producer note",
+      "draft a producer note",
+      "create a producer note",
+      "write a quick producer note",
+      "draft a control room note"
+    ],
+    "creation_intent_examples": [
+      "write a producer note",
+      "draft a producer note",
+      "create a producer note",
+      "write a quick producer note"
+    ],
+    "bounded": true
+  },
+  "written_piece": {
+    "description": "Neutral prose writeup or short explanatory piece.",
+    "semantic_class": "neutral_prose",
+    "aliases": [],
+    "intent_examples": [
+      "write 150 words about",
+      "write a short paragraph about",
+      "draft a brief explanation of"
+    ],
+    "creation_intent_examples": [
+      "write 150 words about",
+      "write a short paragraph about",
+      "draft a brief explanation of"
+    ],
+    "bounded": true
+  }
+}

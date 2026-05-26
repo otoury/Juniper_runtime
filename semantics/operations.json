@@ -1,0 +1,20 @@
+{
+  "operations": {
+    "TRANSFORM": {
+      "mode": "TRANSFORM_EXISTING",
+      "description": "Revise, rewrite, shorten, expand, restyle, translate, polish, sharpen, soften, or otherwise edit the active artifact."
+    },
+    "CONVERT": {
+      "mode": "CONVERT_ARTIFACT",
+      "description": "Change active content into a different artifact type."
+    },
+    "ACTION": {
+      "mode": "CONTINUE_WORKFLOW",
+      "description": "Deliver, send, forward, save, schedule, approve, deny, or otherwise act on active work without rewriting it."
+    },
+    "CONTINUE": {
+      "mode": "CONTINUE_WORKFLOW",
+      "description": "Advance a workflow step without changing active artifact content."
+    }
+  }
+}

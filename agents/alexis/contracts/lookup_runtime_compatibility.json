@@ -1,0 +1,34 @@
+{
+  "bindings": {
+    "draft_email": {
+      "lookup_capability_compatibility": {
+        "contract_version": 1,
+        "min_runtime_version": 1,
+        "max_runtime_version": 1,
+        "required_features": [
+          "exact_entity_lookup",
+          "bounded_context_materialization",
+          "structured_fact_rendering",
+          "audited_context_injection",
+          "lineage",
+          "governance",
+          "execution_timeout",
+          "bounded_concurrency"
+        ]
+      }
+    },
+    "bounded_guest_search": {
+      "lookup_capability_compatibility": {
+        "contract_version": 1,
+        "min_runtime_version": 1,
+        "max_runtime_version": 1,
+        "required_features": [
+          "bounded_entity_search",
+          "governance",
+          "execution_timeout",
+          "bounded_concurrency"
+        ]
+      }
+    }
+  }
+}

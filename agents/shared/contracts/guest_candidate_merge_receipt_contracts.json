@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "contracts": [
+    {
+      "id": "guest_candidate_merge_receipt",
+      "semantic_type": "guest_candidate_merge_receipt",
+      "description": "Contract for guest candidate merge provenance receipts emitted by the structural runtime merge boundary.",
+      "artifact_type": "guest_candidate_merge_receipt",
+      "merge_policy_id": "declared_identity_structural_guest_candidate_merge_v1",
+      "allowed_candidate_origins": [
+        "local_db",
+        "external_public_source",
+        "user_supplied",
+        "manual_operator_verified"
+      ],
+      "allowed_contact_verification_states": [
+        "verified",
+        "public_source_observed",
+        "possible_unverified",
+        "blocked_private",
+        "missing"
+      ],
+      "required_fields": [
+        "artifact_type",
+        "receipt_ref",
+        "merge_policy_id",
+        "merge_is_structural",
+        "group_id",
+        "declared_identity_policy",
+        "selected_candidate_ref",
+        "candidate_refs",
+        "candidate_origins",
+        "contact_verification_states",
+        "identity_evidence",
+        "provenance_refs",
+        "external_overwrote_local_db",
+        "automatic_contact_promotion_performed",
+        "source_weighting_heuristic_performed",
+        "semantic_ranking_performed",
+        "db_write_performed",
+        "external_call_performed",
+        "memory_write_performed"
+      ],
+      "required_false_fields": [
+        "external_overwrote_local_db",
+        "automatic_contact_promotion_performed",
+        "source_weighting_heuristic_performed",
+        "semantic_ranking_performed",
+        "db_write_performed",
+        "external_call_performed",
+        "memory_write_performed"
+      ],
+      "forbidden_fields": [
+        "auto_promoted_contact",
+        "auto_promoted_contact_ref",
+        "contact_promotion",
+        "contact_score",
+        "db_write_result",
+        "memory_ref",
+        "memory_write_result",
+        "rank",
+        "ranking",
+        "score",
+        "semantic_score",
+        "trust_score",
+        "weighted_score"
+      ],
+      "semantic_authority": {
+        "memory_artifact": false,
+        "ranking_allowed": false,
+        "scoring_allowed": false,
+        "contact_promotion_allowed": false,
+        "external_overwrite_allowed": false,
+        "db_writes_allowed": false,
+        "memory_writes_allowed": false,
+        "provider_calls_allowed": false
+      },
+      "fail_closed": {
+        "missing_contract": true,
+        "missing_required_field": true,
+        "invalid_candidate_origin": true,
+        "invalid_contact_verification_state": true,
+        "overwrite_flag_enabled": true,
+        "contact_promotion_flag_enabled": true,
+        "ranking_or_scoring_field_present": true,
+        "write_or_provider_flag_enabled": true
+      }
+    }
+  ]
+}

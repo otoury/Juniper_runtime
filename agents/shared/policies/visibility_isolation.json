@@ -1,0 +1,38 @@
+{
+  "visibility_isolation_policy": {
+    "policy_id": "visibility_isolation_v1",
+    "visibility_observational_only": true,
+    "diagnostics_observational_only": true,
+    "diagnostics_planner_context_allowed": false,
+    "diagnostics_runtime_semantic_context_allowed": false,
+    "visibility_derived_routing_allowed": false,
+    "memory_writes_allowed": false,
+    "hidden_context_injection_allowed": false,
+    "allowed_visibility_attachment_targets": [
+      "operator_report",
+      "telemetry",
+      "audit_receipt",
+      "planner_visible_governance_metadata"
+    ],
+    "allowed_diagnostic_attachment_targets": [
+      "operator_report",
+      "telemetry",
+      "audit_receipt"
+    ],
+    "forbidden_attachment_targets": [
+      "planner_prompt",
+      "semantic_planning_metadata",
+      "execution_planner_output",
+      "lookup_metadata",
+      "retrieval_policy",
+      "workflow_state",
+      "memory_state",
+      "governance_state"
+    ],
+    "content_boundary": {
+      "content_safe_required": true,
+      "raw_content_fields_allowed": false,
+      "receipt_refs_allowed": true
+    }
+  }
+}

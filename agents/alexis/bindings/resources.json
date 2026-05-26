@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "bindings": [
+    {
+      "binding_id": "alexis_guest_db",
+      "adapter_type": "structured_database",
+      "enabled": false,
+      "allowed_capabilities": ["draft_email"],
+      "requires_provenance_validation": true,
+      "max_injection_tokens": 256,
+      "execution_mode": "manual_future",
+      "description": "Structured guest booking database."
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "version": 1,
+  "id": "contact_discovery_safety_policy",
+  "semantic_type": "contact_discovery_safety",
+  "runtime_bounds": {
+    "public_professional_sources_only": true,
+    "contact_value_generation_allowed": false,
+    "email_pattern_inference_allowed": false,
+    "private_phone_harvesting_allowed": false,
+    "personal_address_discovery_allowed": false,
+    "private_personal_data_scraping_allowed": false,
+    "raw_provider_payload_as_contact_record_allowed": false,
+    "memory_writes_allowed": false,
+    "automatic_db_update_allowed": false,
+    "social_engineering_language_allowed": false,
+    "content_safe_audit_required": true
+  },
+  "contact_class_rules": {
+    "public_professional_email": {
+      "contact_types": [
+        "email"
+      ],
+      "source_types": [
+        "official_profile",
+        "official_staff_page",
+        "institutional_directory",
+        "publisher_author_page"
+      ],
+      "required_flags": {
+        "source_public": true,
+        "source_professional": true
+      },
+      "verification_state": "verified_public_professional"
+    },
+    "public_office_press_contact": {
+      "contact_types": [
+        "office_phone",
+        "press_email",
+        "press_form"
+      ],
+      "source_types": [
+        "official_press_page",
+        "official_staff_page",
+        "institutional_directory"
+      ],
+      "required_flags": {
+        "source_public": true,
+        "source_professional": true
+      },
+      "verification_state": "verified_public_professional"
+    },
+    "public_booking_representative": {
+      "contact_types": [
+        "booking_email",
+        "booking_form",
+        "agent_profile"
+      ],
+      "source_types": [
+        "official_booking_page",
+        "official_profile"
+      ],
+      "required_flags": {
+        "source_public": true,
+        "source_professional": true
+      },
+      "verification_state": "verified_public_professional"
+    },
+    "public_social_profile": {
+      "contact_types": [
+        "social_profile"
+      ],
+      "source_types": [
+        "professional_social_profile",
+        "official_profile"
+      ],
+      "required_flags": {
+        "source_public": true,
+        "source_professional": true
+      },
+      "verification_state": "public_source_unverified"
+    },
+    "unverified_possible_contact": {
+      "contact_types": [
+        "possible_email",
+        "possible_social_profile",
+        "possible_contact_form"
+      ],
+      "source_types": [
+        "official_profile",
+        "official_staff_page",
+        "professional_social_profile",
+        "publisher_author_page",
+        "institutional_directory"
+      ],
+      "required_flags": {
+        "source_public": true,
+        "source_professional": true
+      },
+      "verification_state": "public_source_unverified"
+    }
+  },
+  "unsafe_contact_types": [
+    "personal_phone",
+    "personal_mobile",
+    "personal_address",
+    "home_address",
+    "private_email"
+  ],
+  "unsafe_acquisition_methods": [
+    "guessed_email_pattern",
+    "generated_from_name",
+    "scraped_private_profile",
+    "scraped_data_broker",
+    "leaked_dataset",
+    "address_book"
+  ]
+}

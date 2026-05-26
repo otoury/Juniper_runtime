@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "id": "contact_discovery_safety_governance",
+  "semantic_type": "contact_discovery_safety",
+  "governance_state": "audit_only",
+  "live_contact_search_enabled": false,
+  "public_professional_sources_only": true,
+  "allowed_source_types": [
+    "official_profile",
+    "official_staff_page",
+    "official_press_page",
+    "official_booking_page",
+    "professional_social_profile",
+    "publisher_author_page",
+    "institutional_directory"
+  ],
+  "forbidden_source_contexts": [
+    "private_database",
+    "personal_site_without_professional_context",
+    "data_broker",
+    "people_search_site",
+    "leaked_dataset",
+    "private_social_profile",
+    "scraped_address_book"
+  ]
+}

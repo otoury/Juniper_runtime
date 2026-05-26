@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "adapters": [
+    {
+      "adapter_id": "synthetic_guest_context",
+      "source_contract_id": "alexis_guest_db",
+      "enabled": true,
+      "adapter_type": "synthetic",
+      "execution_mode": "synthetic_only",
+      "external_reads_allowed": false
+    },
+    {
+      "adapter_id": "guest_db_readonly_fixture",
+      "source_contract_id": "alexis_guest_db",
+      "enabled": false,
+      "adapter_type": "structured_database",
+      "execution_mode": "read_only_fixture",
+      "external_reads_allowed": true,
+      "read_scope": "local_fixture_file",
+      "read_target": "tools/fixtures/guest_db_readonly_fixture.json",
+      "max_records": 1,
+      "writes_allowed": false
+    },
+    {
+      "adapter_id": "guest_db_readonly",
+      "source_contract_id": "alexis_guest_db",
+      "enabled": false,
+      "adapter_type": "structured_database",
+      "execution_mode": "read_only_fixed_id",
+      "external_reads_allowed": true,
+      "read_scope": "declared_local_database",
+      "read_target": "agents/alexis/adapters/guest_db/resources/canonical/GUESTS_CANONICAL.csv",
+      "max_records": 1,
+      "writes_allowed": false
+    }
+  ]
+}

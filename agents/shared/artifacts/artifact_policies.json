@@ -1,0 +1,487 @@
+{
+  "lower_third": {
+    "persist_as_artifact": true,
+    "preferred_engine": "local_agent",
+    "fallback_engines": [
+      "local_router_primary",
+      "cloud_fast",
+      "cloud_deep"
+    ],
+    "reasoning_depth": "low",
+    "style_sensitivity": "high",
+    "latency_preference": "fast",
+    "formatting_constraints": {
+      "non_empty": true,
+      "single_line": true,
+      "max_words": 8,
+      "must_not_end_with_period": true,
+      "forbid_meta_response": true,
+      "meta_markers": [
+        "here is",
+        "here's",
+        "here’s",
+        "option:",
+        "headline:",
+        "draft:",
+        "response:"
+      ]
+    },
+    "transforms": [
+      "shorten",
+      "tighten",
+      "seriousify",
+      "humorize",
+      "intensify",
+      "make more punchy"
+    ],
+    "extract_fields": [
+      "content",
+      "lower_third"
+    ]
+  },
+  "email_draft": {
+    "persist_as_artifact": true,
+    "preferred_engine": "local_agent",
+    "fallback_engines": [
+      "cloud_fast",
+      "cloud_deep"
+    ],
+    "reasoning_depth": "medium",
+    "style_sensitivity": "high",
+    "latency_preference": "balanced",
+    "formatting_constraints": {
+      "non_empty": true,
+      "forbid_meta_response": true,
+      "required_structure": {
+        "min_paragraphs": 2,
+        "must_start_with_any": [
+          "Hi ",
+          "Hello ",
+          "Dear "
+        ],
+        "must_contain_any": [
+          "Thanks",
+          "Best",
+          "Regards"
+        ]
+      },
+      "meta_markers": [
+        "here is",
+        "here's",
+        "here’s",
+        "draft:",
+        "response:"
+      ]
+    },
+    "transforms": [
+      "shorten",
+      "tighten",
+      "seriousify",
+      "make warmer",
+      "make friendlier",
+      "make more direct"
+    ],
+    "extract_fields": [
+      "Body",
+      "body",
+      "email",
+      "content"
+    ]
+  },
+  "guest_list": {
+    "persist_as_artifact": true,
+    "preferred_engine": "cloud_fast",
+    "fallback_engines": [
+      "local_reasoner_fallback"
+    ],
+    "reasoning_depth": "medium",
+    "style_sensitivity": "medium",
+    "latency_preference": "balanced",
+    "formatting_constraints": {
+      "non_empty": true,
+      "forbid_meta_response": true
+    },
+    "transforms": [
+      "shorten",
+      "prioritize",
+      "filter by expertise",
+      "filter by politics",
+      "filter by availability"
+    ],
+    "extract_fields": [
+      "guests",
+      "content",
+      "items"
+    ]
+  },
+  "guest_candidate_list": {
+    "persist_as_artifact": true,
+    "preferred_engine": "local_agent",
+    "fallback_engines": [],
+    "reasoning_depth": "low",
+    "style_sensitivity": "low",
+    "latency_preference": "fast",
+    "formatting_constraints": {
+      "non_empty": true,
+      "forbid_meta_response": true,
+      "structured_payload_required": true,
+      "provider_execution_allowed": false,
+      "ranking_allowed": false,
+      "scoring_allowed": false,
+      "delivery_allowed": false
+    },
+    "transforms": [],
+    "extract_fields": [
+      "candidates",
+      "candidate_count",
+      "source_scope",
+      "source_scopes",
+      "provenance"
+    ]
+  },
+  "web_guest_discovery_query_plan": {
+    "persist_as_artifact": true,
+    "preferred_engine": "local_agent",
+    "fallback_engines": [],
+    "reasoning_depth": "low",
+    "style_sensitivity": "low",
+    "latency_preference": "fast",
+    "formatting_constraints": {
+      "non_empty": true,
+      "forbid_meta_response": true,
+      "structured_payload_required": true,
+      "provider_execution_allowed": false,
+      "generated_search_queries_allowed": false
+    },
+    "transforms": [],
+    "extract_fields": [
+      "discovery_intent",
+      "topic_entity_focus",
+      "preferred_guest_traits"
+    ]
+  },
+  "guest_external_discovery_handoff": {
+    "persist_as_artifact": true,
+    "preferred_engine": "local_agent",
+    "fallback_engines": [],
+    "reasoning_depth": "low",
+    "style_sensitivity": "low",
+    "latency_preference": "fast",
+    "formatting_constraints": {
+      "non_empty": true,
+      "forbid_meta_response": true,
+      "structured_payload_required": true,
+      "external_call_performed": false,
+      "provider_execution_allowed": false,
+      "handoff_is_execution": false,
+      "contact_scraping_allowed": false,
+      "memory_write_allowed": false
+    },
+    "transforms": [],
+    "extract_fields": [
+      "status",
+      "handoff_eligible",
+      "reason_codes",
+      "discovery_reason_codes",
+      "target_semantic_type",
+      "prepared_request",
+      "query_materialization",
+      "provenance"
+    ]
+  },
+  "external_discovery_result_set": {
+    "persist_as_artifact": true,
+    "preferred_engine": "local_agent",
+    "fallback_engines": [],
+    "reasoning_depth": "low",
+    "style_sensitivity": "low",
+    "latency_preference": "fast",
+    "formatting_constraints": {
+      "non_empty": true,
+      "forbid_meta_response": true,
+      "structured_payload_required": true,
+      "raw_provider_payload_required": true,
+      "citations_required": true,
+      "source_refs_required": true,
+      "provider_metadata_required": true,
+      "provider_execution_allowed": false,
+      "normalization_allowed": false,
+      "delivery_allowed": false,
+      "planner_semantic_grounding_allowed": false,
+      "runtime_semantic_grounding_allowed": false
+    },
+    "transforms": [],
+    "extract_fields": [
+      "raw_provider_payload",
+      "raw_results",
+      "source_refs",
+      "citations",
+      "provider_metadata"
+    ]
+  },
+  "search_api_result_set": {
+    "persist_as_artifact": true,
+    "preferred_engine": "local_agent",
+    "fallback_engines": [],
+    "reasoning_depth": "low",
+    "style_sensitivity": "low",
+    "latency_preference": "fast",
+    "formatting_constraints": {
+      "non_empty": true,
+      "forbid_meta_response": true,
+      "structured_payload_required": true,
+      "raw_provider_payload_required": true,
+      "source_refs_required": true,
+      "provider_metadata_required": false,
+      "provider_execution_allowed": false,
+      "summarization_allowed": false,
+      "domain_normalization_allowed": false,
+      "delivery_allowed": false,
+      "planner_semantic_grounding_allowed": false,
+      "runtime_semantic_grounding_allowed": false
+    },
+    "transforms": [],
+    "extract_fields": [
+      "provider_id",
+      "provider_type",
+      "query",
+      "results",
+      "source_refs",
+      "citations",
+      "external_call_performed",
+      "dry_run",
+      "cost_incurred",
+      "provenance"
+    ]
+  },
+  "external_search_result_set": {
+    "persist_as_artifact": true,
+    "preferred_engine": "local_agent",
+    "fallback_engines": [],
+    "reasoning_depth": "low",
+    "style_sensitivity": "low",
+    "latency_preference": "fast",
+    "formatting_constraints": {
+      "non_empty": true,
+      "forbid_meta_response": true,
+      "structured_payload_required": true,
+      "raw_results_required": true,
+      "source_refs_required": true,
+      "citations_required": true,
+      "result_lineage_required_for_normalized_results": true,
+      "bounded_result_set_merge_allowed": true,
+      "provider_metadata_allowed": false,
+      "provider_integration_allowed": false,
+      "provider_execution_allowed": false,
+      "external_call_performed_allowed": false,
+      "summarization_allowed": false,
+      "domain_normalization_allowed": false,
+      "ranking_allowed": false,
+      "delivery_allowed": false,
+      "planner_semantic_grounding_allowed": false,
+      "runtime_semantic_grounding_allowed": false
+    },
+    "transforms": [],
+    "extract_fields": [
+      "search_id",
+      "query",
+      "raw_results",
+      "source_refs",
+      "citations",
+      "result_lineage",
+      "merge_metadata",
+      "external_call_performed",
+      "cost_incurred",
+      "provenance"
+    ]
+  },
+  "external_search_execution_receipt": {
+    "persist_as_artifact": false,
+    "preferred_engine": "local_agent",
+    "fallback_engines": [],
+    "reasoning_depth": "low",
+    "style_sensitivity": "low",
+    "latency_preference": "fast",
+    "formatting_constraints": {
+      "non_empty": true,
+      "forbid_meta_response": true,
+      "structured_payload_required": true,
+      "planner_context_allowed": false,
+      "memory_write_allowed": false,
+      "semantic_mutation_allowed": false,
+      "raw_provider_payload_allowed": false,
+      "raw_results_allowed": false,
+      "source_refs_allowed": false,
+      "citations_allowed": false,
+      "query_allowed": false
+    },
+    "transforms": [],
+    "extract_fields": [
+      "receipt_id",
+      "receipt_ref",
+      "request_id",
+      "search_id",
+      "provider_id",
+      "authorization_decision",
+      "execution_state",
+      "timing",
+      "bounds",
+      "normalized_result_metadata",
+      "failure",
+      "result_artifact_ref"
+    ]
+  },
+  "insufficient_coverage_result": {
+    "persist_as_artifact": true,
+    "preferred_engine": "local_agent",
+    "fallback_engines": [],
+    "reasoning_depth": "low",
+    "style_sensitivity": "low",
+    "latency_preference": "fast",
+    "formatting_constraints": {
+      "non_empty": true,
+      "forbid_meta_response": true,
+      "structured_payload_required": true,
+      "fallback_execution_allowed": false,
+      "provider_execution_allowed": false
+    },
+    "transforms": [],
+    "extract_fields": [
+      "reason",
+      "message",
+      "metrics",
+      "source_refs",
+      "retrieval_metadata"
+    ]
+  },
+  "rss_coverage_adequacy": {
+    "persist_as_artifact": true,
+    "preferred_engine": "local_agent",
+    "fallback_engines": [],
+    "reasoning_depth": "low",
+    "style_sensitivity": "low",
+    "latency_preference": "fast",
+    "formatting_constraints": {
+      "non_empty": true,
+      "forbid_meta_response": true,
+      "structured_payload_required": true,
+      "fallback_execution_allowed": false,
+      "provider_execution_allowed": false
+    },
+    "transforms": [],
+    "extract_fields": [
+      "adequate",
+      "outcome",
+      "metrics",
+      "policy",
+      "source_refs",
+      "fallback_eligibility",
+      "retrieval_metadata"
+    ]
+  },
+  "rss_external_search_handoff": {
+    "persist_as_artifact": true,
+    "preferred_engine": "local_agent",
+    "fallback_engines": [],
+    "reasoning_depth": "low",
+    "style_sensitivity": "low",
+    "latency_preference": "fast",
+    "formatting_constraints": {
+      "non_empty": true,
+      "forbid_meta_response": true,
+      "structured_payload_required": true,
+      "external_call_performed": false,
+      "provider_execution_allowed": false,
+      "handoff_is_execution": false,
+      "memory_write_allowed": false
+    },
+    "transforms": [],
+    "extract_fields": [
+      "status",
+      "handoff_eligible",
+      "reason_codes",
+      "target_semantic_type",
+      "prepared_request",
+      "query_materialization",
+      "provenance"
+    ]
+  },
+  "rss_cloud_escalation_result": {
+    "persist_as_artifact": true,
+    "preferred_engine": "local_agent",
+    "fallback_engines": [],
+    "reasoning_depth": "low",
+    "style_sensitivity": "low",
+    "latency_preference": "fast",
+    "formatting_constraints": {
+      "non_empty": true,
+      "forbid_meta_response": true,
+      "structured_payload_required": true,
+      "external_call_performed": false,
+      "delivery_performed": false
+    },
+    "transforms": [],
+    "extract_fields": [
+      "workflow_id",
+      "source_artifact_type",
+      "source_scope",
+      "status",
+      "eligible",
+      "execution_allowed",
+      "fallback_eligibility",
+      "provider",
+      "authorization",
+      "skipped_reasons"
+    ]
+  },
+  "producer_note": {
+    "persist_as_artifact": true,
+    "preferred_engine": "local_agent",
+    "fallback_engines": [
+      "cloud_fast",
+      "cloud_deep"
+    ],
+    "reasoning_depth": "low",
+    "style_sensitivity": "high",
+    "latency_preference": "fast",
+    "formatting_constraints": {
+      "non_empty": true,
+      "forbid_meta_response": true
+    },
+    "transforms": [
+      "shorten",
+      "tighten",
+      "make clearer"
+    ],
+    "extract_fields": [
+      "content",
+      "note"
+    ]
+  },
+  "written_piece": {
+    "persist_as_artifact": true,
+    "preferred_engine": "local_agent",
+    "fallback_engines": [
+      "cloud_fast",
+      "cloud_deep"
+    ],
+    "reasoning_depth": "low",
+    "style_sensitivity": "medium",
+    "latency_preference": "fast",
+    "formatting_constraints": {
+      "non_empty": true,
+      "forbid_meta_response": true
+    },
+    "transforms": [
+      "shorten",
+      "tighten",
+      "sharpen",
+      "expand_scope"
+    ],
+    "extract_fields": [
+      "content",
+      "text",
+      "piece"
+    ]
+  }
+}

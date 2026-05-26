@@ -1,0 +1,27 @@
+{
+  "sourced_contact_result": {
+    "contract_dir": "sourced_contact_result",
+    "instructions_file": "instructions.md",
+    "rules": {
+      "requires_sources": true,
+      "no_delivery": true,
+      "no_outreach_draft": true
+    }
+  },
+  "lower_third": {
+    "contract_dir": "lower_third",
+    "schema_file": "schema.json",
+    "instructions_file": "instructions.md",
+    "examples_file": "examples.json",
+    "repair_file": "repair.md",
+    "extract_field": "content",
+    "rules": {
+      "non_empty": true,
+      "single_line": true,
+      "max_words": 8,
+      "no_actions": true,
+      "forbid_meta_response": true,
+      "must_not_end_with_period": true
+    }
+  }
+}

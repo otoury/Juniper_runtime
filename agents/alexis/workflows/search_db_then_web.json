@@ -1,0 +1,150 @@
+{
+  "workflow_id": "search_db_then_web",
+  "workflow_type": "semantic_workflow_skeleton",
+  "owning_agent": "alexis",
+  "description": "Composable Alexis guest search workflow: database retrieval, typed adequacy assessment, non-blocking notice, and future web fallback declaration.",
+  "governance_state": "enabled",
+  "planner_authority_required": true,
+  "steps": [
+    {
+      "step_id": "run_search_db",
+      "step_kind": "workflow_call",
+      "operation_kind": "run_workflow",
+      "semantic_operation": "run_search_db",
+      "capability": "workflow_runtime",
+      "output_type": "workflow_result",
+      "workflow_ref": "search_db",
+      "input_refs": [
+        "artifact:guest_search_request:active"
+      ],
+      "output_ref": "artifact:guest_candidate_list:search_db",
+      "requires_approval": false,
+      "bounded": true,
+      "governance_state": "enabled",
+      "constraints": {
+        "source_scope": "db_then_web",
+        "child_source_scope": "guest_db",
+        "execution_performed": false
+      },
+      "on_success": "assess_guest_candidate_adequacy",
+      "on_failure": "__terminate__",
+      "on_inadequate": "assess_guest_candidate_adequacy"
+    },
+    {
+      "step_id": "assess_guest_candidate_adequacy",
+      "step_kind": "selection",
+      "semantic_operation": "assess_guest_candidate_adequacy",
+      "capability": "assess_result",
+      "output_type": "workflow_result",
+      "requires_approval": false,
+      "bounded": true,
+      "governance_state": "enabled",
+      "placeholder": true,
+      "input_refs": [
+        "artifact:guest_candidate_list:search_db"
+      ],
+      "output_ref": "artifact:guest_candidate_adequacy:search_db",
+      "constraints": {
+        "assessment_type": "guest_candidate_adequacy",
+        "source_scope": "db_then_web",
+        "input_artifact_type": "guest_candidate_list",
+        "result_type": "guest_candidate_adequacy",
+        "typed_placeholder": true,
+        "logic_implemented": false,
+        "raw_prose_inspection_allowed": false,
+        "adequacy_result_shape": {
+          "artifact_type": "guest_candidate_adequacy",
+          "adequate": null,
+          "outcome": "unknown",
+          "candidate_count": 0,
+          "min_required_candidates": 1,
+          "required_signals": [
+            "has_email_contact",
+            "has_video_presence"
+          ],
+          "missing_signals": [],
+          "provenance": {
+            "assessment_executed": false,
+            "ranking_performed": false
+          }
+        },
+        "future_enrichment_signals": [
+          "has_email_contact",
+          "email_refs",
+          "has_video_presence",
+          "video_presence_refs",
+          "contact_confidence",
+          "on_air_suitability_signals"
+        ],
+        "ranking_performed": false
+      },
+      "on_success": "__terminate__",
+      "on_failure": "__terminate__",
+      "on_inadequate": "notify_web_search_fallback"
+    },
+    {
+      "step_id": "notify_web_search_fallback",
+      "step_kind": "action_generation",
+      "operation_kind": "notify_and_continue",
+      "semantic_operation": "notify_web_search_fallback",
+      "capability": "notify_operator",
+      "output_type": "typed_action",
+      "action_type": "notify_operator",
+      "requires_approval": false,
+      "bounded": true,
+      "governance_state": "enabled",
+      "constraints": {
+        "source_scope": "db_then_web",
+        "non_blocking": true,
+        "external_notification_performed": false,
+        "message_template": {
+          "template_id": "db_guest_candidates_inadequate_web_fallback_v1",
+          "format": "plain_text",
+          "text": "I found {candidate_count} database guest candidates, below the desired minimum of {min_required_candidates}: {candidate_names}. I am expanding to web discovery now.",
+          "placeholders": [
+            "candidate_count",
+            "min_required_candidates",
+            "candidate_names"
+          ]
+        }
+      },
+      "on_success": "run_search_web",
+      "on_failure": "run_search_web",
+      "on_inadequate": "run_search_web"
+    },
+    {
+      "step_id": "run_search_web",
+      "step_kind": "workflow_call",
+      "operation_kind": "run_workflow",
+      "semantic_operation": "run_search_web",
+      "capability": "workflow_runtime",
+      "output_type": "workflow_result",
+      "workflow_ref": "search_web",
+      "input_refs": [
+        "artifact:guest_search_request:active",
+        "artifact:guest_candidate_list:search_db",
+        "artifact:guest_candidate_adequacy:search_db"
+      ],
+      "output_ref": "artifact:workflow_result:search_web",
+      "requires_approval": false,
+      "bounded": true,
+      "governance_state": "enabled",
+      "constraints": {
+        "source_scope": "db_then_web",
+        "child_source_scope": "web",
+        "execution_performed": false,
+        "web_search_execution_allowed": false
+      },
+      "on_success": "__terminate__",
+      "on_failure": "__terminate__",
+      "on_inadequate": "__terminate__"
+    }
+  ],
+  "non_goals": [
+    "no web search execution",
+    "no ranking",
+    "no outreach draft generation",
+    "no delivery execution",
+    "no autonomous continuation"
+  ]
+}

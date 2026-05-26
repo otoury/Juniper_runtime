@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "contracts": [
+    {
+      "id": "bounded_lookup_context_capability",
+      "contract_version": 1,
+      "runtime_compatibility_version": 1
+    }
+  ]
+}

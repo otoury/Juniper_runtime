@@ -1,0 +1,53 @@
+{
+  "name": "request_gate",
+  "description": "Classifies the interaction shape before planning.",
+  "return_instruction": "Return ONLY valid JSON. No markdown. No prose.",
+  "schema": {
+    "type": "object",
+    "required": [
+      "interaction_mode",
+      "transform_intent",
+      "needs_capability_context",
+      "needs_full_planning",
+      "safe_for_fast_path",
+      "reason"
+    ],
+    "properties": {
+      "interaction_mode": {
+        "type": "string",
+        "enum": [
+          "NEW_REQUEST",
+          "TRANSFORM_EXISTING",
+          "CONVERT_ARTIFACT",
+          "CONTINUE_WORKFLOW",
+          "ANSWER_QUESTION"
+        ]
+      },
+      "transform_intent": {
+        "type": ["string", "null"]
+      },
+      "needs_capability_context": {
+        "type": "boolean"
+      },
+      "needs_full_planning": {
+        "type": "boolean"
+      },
+      "safe_for_fast_path": {
+        "type": "boolean"
+      },
+      "reason": {
+        "type": "string"
+      },
+      "uses_active_artifact": {
+        "type": "boolean"
+      },
+      "requires_artifact_context": {
+        "type": "boolean"
+      },
+      "shared_capability": {
+        "type": ["string", "null"]
+      }
+    },
+    "additionalProperties": false
+  }
+}

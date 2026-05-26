@@ -1,0 +1,14 @@
+{
+  "default_skills": [],
+  "action_output_skills": ["structured_actions"],
+  "semantic_output_skills": {
+    "lower_third": ["lower_third"],
+    "rewrite": ["rewrite"],
+    "guest_booking": ["guest_booking", "structured_actions"],
+    "producer_note": ["producer_note", "structured_actions"]
+  },
+  "interaction_mode_skills": {
+    "TRANSFORM_EXISTING": ["rewrite"],
+    "CONTINUE_WORKFLOW": ["structured_actions"]
+  }
+}
